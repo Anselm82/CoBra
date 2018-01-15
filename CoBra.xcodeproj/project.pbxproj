@@ -7,25 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43206BD1200CDFD9005FAFBE /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43206BD0200CDFD9005FAFBE /* DetailViewController.swift */; };
+		43206BD3200CDFFC005FAFBE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43206BD2200CDFFC005FAFBE /* MainViewController.swift */; };
 		434BD421200CCA14009A0AC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434BD420200CCA14009A0AC7 /* AppDelegate.swift */; };
 		434BD424200CCA14009A0AC7 /* CoBra.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 434BD422200CCA14009A0AC7 /* CoBra.xcdatamodeld */; };
-		434BD426200CCA14009A0AC7 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434BD425200CCA14009A0AC7 /* MasterViewController.swift */; };
-		434BD428200CCA14009A0AC7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434BD427200CCA14009A0AC7 /* DetailViewController.swift */; };
-		434BD42B200CCA14009A0AC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 434BD429200CCA14009A0AC7 /* Main.storyboard */; };
 		434BD42D200CCA14009A0AC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 434BD42C200CCA14009A0AC7 /* Assets.xcassets */; };
 		434BD430200CCA14009A0AC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 434BD42E200CCA14009A0AC7 /* LaunchScreen.storyboard */; };
+		43D8465B200CDAFD007BD746 /* CoBra.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43D8465A200CDAFC007BD746 /* CoBra.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		43206BD0200CDFD9005FAFBE /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		43206BD2200CDFFC005FAFBE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		434BD41D200CCA14009A0AC7 /* CoBra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoBra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		434BD420200CCA14009A0AC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		434BD423200CCA14009A0AC7 /* CoBra.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoBra.xcdatamodel; sourceTree = "<group>"; };
-		434BD425200CCA14009A0AC7 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		434BD427200CCA14009A0AC7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		434BD42A200CCA14009A0AC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		434BD42C200CCA14009A0AC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		434BD42F200CCA14009A0AC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		434BD431200CCA14009A0AC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43D8465A200CDAFC007BD746 /* CoBra.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CoBra.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,14 +58,14 @@
 		434BD41F200CCA14009A0AC7 /* CoBra */ = {
 			isa = PBXGroup;
 			children = (
+				43206BD0200CDFD9005FAFBE /* DetailViewController.swift */,
 				434BD420200CCA14009A0AC7 /* AppDelegate.swift */,
-				434BD425200CCA14009A0AC7 /* MasterViewController.swift */,
-				434BD427200CCA14009A0AC7 /* DetailViewController.swift */,
-				434BD429200CCA14009A0AC7 /* Main.storyboard */,
+				43D8465A200CDAFC007BD746 /* CoBra.storyboard */,
 				434BD42C200CCA14009A0AC7 /* Assets.xcassets */,
 				434BD42E200CCA14009A0AC7 /* LaunchScreen.storyboard */,
 				434BD431200CCA14009A0AC7 /* Info.plist */,
 				434BD422200CCA14009A0AC7 /* CoBra.xcdatamodeld */,
+				43206BD2200CDFFC005FAFBE /* MainViewController.swift */,
 			);
 			path = CoBra;
 			sourceTree = "<group>";
@@ -131,7 +131,7 @@
 			files = (
 				434BD430200CCA14009A0AC7 /* LaunchScreen.storyboard in Resources */,
 				434BD42D200CCA14009A0AC7 /* Assets.xcassets in Resources */,
-				434BD42B200CCA14009A0AC7 /* Main.storyboard in Resources */,
+				43D8465B200CDAFD007BD746 /* CoBra.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,24 +142,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43206BD1200CDFD9005FAFBE /* DetailViewController.swift in Sources */,
 				434BD421200CCA14009A0AC7 /* AppDelegate.swift in Sources */,
 				434BD424200CCA14009A0AC7 /* CoBra.xcdatamodeld in Sources */,
-				434BD426200CCA14009A0AC7 /* MasterViewController.swift in Sources */,
-				434BD428200CCA14009A0AC7 /* DetailViewController.swift in Sources */,
+				43206BD3200CDFFC005FAFBE /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		434BD429200CCA14009A0AC7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				434BD42A200CCA14009A0AC7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		434BD42E200CCA14009A0AC7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
