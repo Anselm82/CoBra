@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Conference</key>
+	<dict>
+		<key>Website</key>
+		<string></string>
+		<key>Ranking</key>
+		<string></string>
+		<key>Location</key>
+		<string></string>
+		<key>ArticleDeadline</key>
+		<date>2018-01-17T15:59:51Z</date>
+		<key>AbstractDeadline</key>
+		<date>2018-01-17T15:59:39Z</date>
+		<key>Acronym</key>
+		<string></string>
+		<key>Name</key>
+		<string></string>
+	</dict>
+</dict>
+</plist>
