@@ -236,9 +236,7 @@
                     <navigationItem key="navigationItem" title="Authors" id="Zdf-7t-Un8">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="4Eh-gM-tRF">
                             <connections>
-                                <segue destination="KpK-9B-MQk" kind="popoverPresentation" identifier="addAuthor" popoverAnchorBarButtonItem="4Eh-gM-tRF" id="KEj-nF-yas">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
+                                <segue destination="KpK-9B-MQk" kind="presentation" identifier="addAuthor" id="KEj-nF-yas"/>
                             </connections>
                         </barButtonItem>
                         <connections>
