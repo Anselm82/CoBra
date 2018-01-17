@@ -1,18 +1,24 @@
 //
-//  AuthorDetailViewController.swift
+//  ConferenceDetailViewController.swift
 //  CoBra
 //
-//  Created by Juan José Hernández Alonso on 16/1/18.
+//  Created by Juan José Hernández Alonso on 17/1/18.
 //  Copyright © 2018 Universidad San Jorge. All rights reserved.
 //
 
 import UIKit
 
-class AuthorDetailViewController: UIViewController {
+class ConferenceDetailViewController: UIViewController {
+    @IBOutlet weak var conferenceNameLabel: UILabel!
+    @IBOutlet weak var acronymLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var websiteLabel: UILabel!
+    @IBOutlet weak var rankingLabel: UILabel!
+    @IBOutlet weak var articleDeadlineLabel: UILabel!
+    @IBOutlet weak var abstractDeadlineLabel: UILabel!
     
-    @IBOutlet weak var authorNameLabel: UILabel!
-    @IBOutlet weak var authorSurnameLabel: UILabel!
-    @IBOutlet weak var authorAffiliationLabel: UILabel!
+    var conference : Conference?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
