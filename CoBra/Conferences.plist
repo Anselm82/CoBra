@@ -5,19 +5,19 @@
 	<key>Conference</key>
 	<dict>
 		<key>Website</key>
-		<string></string>
+		<string>http://www.re18.org</string>
 		<key>Ranking</key>
-		<string></string>
+		<string>A</string>
 		<key>Location</key>
-		<string></string>
+		<string>Banff, Alberta, Canadá</string>
 		<key>ArticleDeadline</key>
-		<date>2018-01-17T15:59:51Z</date>
+		<date>2018-02-28T22:59:59Z</date>
 		<key>AbstractDeadline</key>
-		<date>2018-01-17T15:59:39Z</date>
+		<date>2018-02-16T22:59:59Z</date>
 		<key>Acronym</key>
-		<string></string>
+		<string>RE</string>
 		<key>Name</key>
-		<string></string>
+		<string>Requirements Engineering</string>
 	</dict>
 </dict>
 </plist>
