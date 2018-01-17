@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		43206BD1200CDFD9005FAFBE /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43206BD0200CDFD9005FAFBE /* DetailViewController.swift */; };
 		43206BD3200CDFFC005FAFBE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43206BD2200CDFFC005FAFBE /* MainViewController.swift */; };
+		432C763C200E8E03004146CD /* AuthorsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C763B200E8E03004146CD /* AuthorsTableViewController.swift */; };
+		432C763E200E8E3F004146CD /* AddAuthorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C763D200E8E3F004146CD /* AddAuthorViewController.swift */; };
+		432C7640200E8E64004146CD /* AuthorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C763F200E8E64004146CD /* AuthorDetailViewController.swift */; };
 		434BD421200CCA14009A0AC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434BD420200CCA14009A0AC7 /* AppDelegate.swift */; };
 		434BD424200CCA14009A0AC7 /* CoBra.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 434BD422200CCA14009A0AC7 /* CoBra.xcdatamodeld */; };
 		434BD42D200CCA14009A0AC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 434BD42C200CCA14009A0AC7 /* Assets.xcassets */; };
@@ -19,6 +22,9 @@
 /* Begin PBXFileReference section */
 		43206BD0200CDFD9005FAFBE /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		43206BD2200CDFFC005FAFBE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		432C763B200E8E03004146CD /* AuthorsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorsTableViewController.swift; sourceTree = "<group>"; };
+		432C763D200E8E3F004146CD /* AddAuthorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAuthorViewController.swift; sourceTree = "<group>"; };
+		432C763F200E8E64004146CD /* AuthorDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorDetailViewController.swift; sourceTree = "<group>"; };
 		434BD41D200CCA14009A0AC7 /* CoBra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoBra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		434BD420200CCA14009A0AC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		434BD423200CCA14009A0AC7 /* CoBra.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoBra.xcdatamodel; sourceTree = "<group>"; };
@@ -39,6 +45,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		432C7641200E8E6A004146CD /* Author */ = {
+			isa = PBXGroup;
+			children = (
+				432C763B200E8E03004146CD /* AuthorsTableViewController.swift */,
+				432C763D200E8E3F004146CD /* AddAuthorViewController.swift */,
+				432C763F200E8E64004146CD /* AuthorDetailViewController.swift */,
+			);
+			path = Author;
+			sourceTree = "<group>";
+		};
 		434BD414200CCA14009A0AC7 = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +82,7 @@
 				434BD431200CCA14009A0AC7 /* Info.plist */,
 				434BD422200CCA14009A0AC7 /* CoBra.xcdatamodeld */,
 				43206BD2200CDFFC005FAFBE /* MainViewController.swift */,
+				432C7641200E8E6A004146CD /* Author */,
 			);
 			path = CoBra;
 			sourceTree = "<group>";
@@ -143,8 +160,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				43206BD1200CDFD9005FAFBE /* DetailViewController.swift in Sources */,
+				432C763E200E8E3F004146CD /* AddAuthorViewController.swift in Sources */,
 				434BD421200CCA14009A0AC7 /* AppDelegate.swift in Sources */,
+				432C763C200E8E03004146CD /* AuthorsTableViewController.swift in Sources */,
 				434BD424200CCA14009A0AC7 /* CoBra.xcdatamodeld in Sources */,
+				432C7640200E8E64004146CD /* AuthorDetailViewController.swift in Sources */,
 				43206BD3200CDFFC005FAFBE /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
