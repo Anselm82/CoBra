@@ -17,6 +17,7 @@
 		434BD42D200CCA14009A0AC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 434BD42C200CCA14009A0AC7 /* Assets.xcassets */; };
 		434BD430200CCA14009A0AC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 434BD42E200CCA14009A0AC7 /* LaunchScreen.storyboard */; };
 		4389A939200FAA020045C94E /* Conferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4389A938200FAA020045C94E /* Conferences.plist */; };
+		4389A93B200FABA70045C94E /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389A93A200FABA60045C94E /* MasterViewController.swift */; };
 		43A657EF200F6DDB008B9F38 /* AuthorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A657EE200F6DDB008B9F38 /* AuthorTableViewCell.swift */; };
 		43A657F3200F7805008B9F38 /* ConferenceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A657F2200F7805008B9F38 /* ConferenceTableViewCell.swift */; };
 		43A657F5200F782F008B9F38 /* IdeaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A657F4200F782F008B9F38 /* IdeaTableViewCell.swift */; };
@@ -40,6 +41,7 @@
 		434BD42F200CCA14009A0AC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		434BD431200CCA14009A0AC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4389A938200FAA020045C94E /* Conferences.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Conferences.plist; sourceTree = "<group>"; };
+		4389A93A200FABA60045C94E /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		43A657EE200F6DDB008B9F38 /* AuthorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorTableViewCell.swift; sourceTree = "<group>"; };
 		43A657F2200F7805008B9F38 /* ConferenceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceTableViewCell.swift; sourceTree = "<group>"; };
 		43A657F4200F782F008B9F38 /* IdeaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaTableViewCell.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				43A657F1200F77F5008B9F38 /* Idea */,
 				43A657F0200F77EE008B9F38 /* Conference */,
 				43206BD0200CDFD9005FAFBE /* DetailViewController.swift */,
+				4389A93A200FABA60045C94E /* MasterViewController.swift */,
 				434BD420200CCA14009A0AC7 /* AppDelegate.swift */,
 				43D8465A200CDAFC007BD746 /* CoBra.storyboard */,
 				434BD42C200CCA14009A0AC7 /* Assets.xcassets */,
@@ -205,6 +208,7 @@
 				43A657F9200F7B2E008B9F38 /* ConferenceTableViewController.swift in Sources */,
 				43A657F7200F7B1F008B9F38 /* IdeaTableViewController.swift in Sources */,
 				432C763E200E8E3F004146CD /* AddAuthorViewController.swift in Sources */,
+				4389A93B200FABA70045C94E /* MasterViewController.swift in Sources */,
 				43A657F5200F782F008B9F38 /* IdeaTableViewCell.swift in Sources */,
 				43A657EF200F6DDB008B9F38 /* AuthorTableViewCell.swift in Sources */,
 				434BD421200CCA14009A0AC7 /* AppDelegate.swift in Sources */,
