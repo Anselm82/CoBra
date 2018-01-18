@@ -17,37 +17,22 @@ class AuthorTableViewController: UITableViewController {
     }()
     
     lazy var frc : NSFetchedResultsController<Author> = {
-        
         let req = NSFetchRequest<Author>(entityName:"Author")
         req.sortDescriptors = [ NSSortDescriptor(key:"name", ascending:true)]
-        
-        
         let _frc = NSFetchedResultsController(fetchRequest: req,
                                               managedObjectContext: context,
                                               sectionNameKeyPath: nil,
                                               cacheName: nil)
-        
         _frc.delegate = self
-        
         try? _frc.performFetch()
-        
         return _frc
-        
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -69,20 +54,10 @@ class AuthorTableViewController: UITableViewController {
         var author : Author
         author = frc.object(at: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "AuthorCell", for: indexPath) as! AuthorTableViewCell
-        
         cell.author = author
         return cell
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
     /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -101,36 +76,22 @@ class AuthorTableViewController: UITableViewController {
 
     }
     */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showAuthorDetail" {
             var author: Author
             if let row = tableView.indexPathForSelectedRow?.row {
                 author = frc.object(at: IndexPath(row:row, section:0))
-                let navigationViewController = segue.destination as! UINavigationController
-                let detailViewController = navigationViewController.viewControllers.first as! AuthorDetailViewController
+                let detailViewController = segue.destination as! AuthorDetailViewController
                 detailViewController.author = author
             }
         }
     }
-    
-
-    @IBAction func unwindToAuthorTableViewController(segue:UIStoryboardSegue) { }
 }
 
-    // MARK: - Edition
+    // MARK: - AuthorTableViewController+NSFetchedResultsControllerDelegate
 
 extension AuthorTableViewController : NSFetchedResultsControllerDelegate {
     

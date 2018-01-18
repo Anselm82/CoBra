@@ -33,6 +33,10 @@ class AuthorAddViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func cancel(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     var previous : AuthorTableViewController?
     
     lazy var context : NSManagedObjectContext = {
@@ -41,24 +45,9 @@ class AuthorAddViewController: UIViewController {
         return persistenContainer.viewContext
     }()
     
-   
     override func viewDidLoad() {
         super.viewDidLoad()
         authorNameTextField.becomeFirstResponder()
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    @IBAction func cancel(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
     }
 
 }

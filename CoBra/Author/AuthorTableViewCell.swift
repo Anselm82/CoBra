@@ -15,9 +15,6 @@ class AuthorTableViewCell: UITableViewCell {
     
     var author : Author? {
         didSet {
-            guard author != nil else {
-                return
-            }
             let text = "\(author!.surname ?? ""), \(author!.name ?? "")"
             if text != ", " {
                 authorNameLabel.text = text
@@ -25,17 +22,6 @@ class AuthorTableViewCell: UITableViewCell {
                 authorNameLabel.text = ""
             }
         }
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

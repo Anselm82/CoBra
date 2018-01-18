@@ -41,21 +41,21 @@
                                         <rect key="frame" x="0.0" y="0.0" width="88" height="30"/>
                                         <state key="normal" title="Authors"/>
                                         <connections>
-                                            <segue destination="Ncy-Gc-9Uf" kind="show" identifier="showAuthorsList" id="cd1-UF-dyV"/>
+                                            <segue destination="7bK-jq-Zjz" kind="show" identifier="showAuthors" id="Q52-ah-HFm"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1GT-0P-2mH">
                                         <rect key="frame" x="0.0" y="45" width="88" height="30"/>
                                         <state key="normal" title="Conferences"/>
                                         <connections>
-                                            <segue destination="V66-hr-07n" kind="show" identifier="showConferenceList" id="ep4-UU-8kF"/>
+                                            <segue destination="1gY-tp-Jvw" kind="show" id="e5k-CM-udP"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2is-p9-6Gj">
                                         <rect key="frame" x="0.0" y="90" width="88" height="30"/>
                                         <state key="normal" title="Ideas"/>
                                         <connections>
-                                            <segue destination="ezM-4X-8qg" kind="show" id="GRd-ch-kAl"/>
+                                            <segue destination="3xJ-tA-dhX" kind="show" id="Ob1-Nx-uHK"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -162,39 +162,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GQe-fh-phV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2613.5999999999999" y="-1406.4467766116943"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Gna-bY-7M2">
-            <objects>
-                <navigationController id="V66-hr-07n" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vUE-js-r6G">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="1gY-tp-Jvw" kind="relationship" relationship="rootViewController" id="hln-kQ-CgE"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9wd-Lf-5QM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1700" y="-1406"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="yVC-7a-cGM">
-            <objects>
-                <navigationController id="Ncy-Gc-9Uf" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bWR-M5-FlH">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="7bK-jq-Zjz" kind="relationship" relationship="rootViewController" id="EU4-Wc-dv2"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZBY-XI-Ln9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1700" y="-625"/>
+            <point key="canvasLocation" x="2028" y="-1406"/>
         </scene>
         <!--Master-->
         <scene sceneID="smW-Zh-WAh">
@@ -249,7 +217,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2615" y="-625"/>
+            <point key="canvasLocation" x="2028" y="-630"/>
         </scene>
         <!--Ideas-->
         <scene sceneID="O9F-an-4Gb">
@@ -290,7 +258,9 @@
                     <navigationItem key="navigationItem" title="Ideas" id="KiX-jM-qqX">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="kuR-WJ-AsK">
                             <connections>
-                                <segue destination="SPF-cu-g55" kind="presentation" identifier="addIdea" id="ij3-ZT-jxI"/>
+                                <segue destination="SPF-cu-g55" kind="popoverPresentation" identifier="addIdea" popoverAnchorBarButtonItem="kuR-WJ-AsK" id="ij3-ZT-jxI">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -351,7 +321,7 @@
                                 </constraints>
                                 <state key="normal" title="Authors"/>
                                 <connections>
-                                    <segue destination="83G-OJ-oM5" kind="showDetail" id="0sh-7G-n7P"/>
+                                    <segue destination="83G-OJ-oM5" kind="showDetail" identifier="selectAuthors" id="0sh-7G-n7P"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agE-oo-X5t">
@@ -361,7 +331,7 @@
                                 </constraints>
                                 <state key="normal" title="Conference"/>
                                 <connections>
-                                    <segue destination="7Qc-dJ-I1J" kind="showDetail" id="Tri-AN-xZR"/>
+                                    <segue destination="7Qc-dJ-I1J" kind="showDetail" identifier="selectConference" id="Tri-AN-xZR"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8b3-AJ-E5z">
@@ -606,22 +576,6 @@
             <point key="canvasLocation" x="809" y="2615"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="UAn-XU-Tlw">
-            <objects>
-                <navigationController id="ezM-4X-8qg" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="28V-dX-oNH">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="3xJ-tA-dhX" kind="relationship" relationship="rootViewController" id="Z6W-sz-TnN"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="k08-wU-r9c" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="809" y="279"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="jXP-e3-hbx">
             <objects>
                 <navigationController id="KpK-9B-MQk" sceneMemberID="viewController">
@@ -635,7 +589,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z8B-57-gvS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2614" y="91"/>
+            <point key="canvasLocation" x="2028" y="181"/>
         </scene>
         <!--Add Author-->
         <scene sceneID="ncN-hv-ULZ">
@@ -733,7 +687,7 @@
                 <exit id="RHD-ed-Yoz" userLabel="Exit" sceneMemberID="exit"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8FN-Lf-LAU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3485.5999999999999" y="91.304347826086968"/>
+            <point key="canvasLocation" x="3486" y="180"/>
         </scene>
         <!--Author's detail-->
         <scene sceneID="NW8-k0-DFL">
@@ -1037,7 +991,7 @@
         <!--Idea Authors-->
         <scene sceneID="L3B-Bf-pya">
             <objects>
-                <tableViewController id="l1Z-5d-PXA" sceneMemberID="viewController">
+                <tableViewController id="l1Z-5d-PXA" customClass="IdeaAuthorTableViewController" customModule="CoBra" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ohv-tq-y0C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1059,6 +1013,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="authorNameLabel" destination="D2H-8k-mz7" id="JRz-6O-jel"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1068,7 +1025,11 @@
                     </tableView>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="lG1-Kk-TWW"/>
-                        <barButtonItem systemItem="done" id="oTa-Rr-WQk"/>
+                        <barButtonItem systemItem="done" id="oTa-Rr-WQk">
+                            <connections>
+                                <action selector="selectionFinished:" destination="l1Z-5d-PXA" id="bQ3-aR-OCY"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Idea Authors" id="QDe-4t-3Kv"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>

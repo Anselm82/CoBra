@@ -12,16 +12,15 @@ class ConferenceTableViewCell: UITableViewCell {
 
     @IBOutlet weak var conferenceNameLabel: UILabel!
     
-    var conference : Conference?
+    var conference : Conference? {
+        didSet {
+            let text = "\(conference!.name ?? "")"
+            conferenceNameLabel.text = text
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        guard conference != nil else {
-            return
-        }
-        let text = "\(conference!.name ?? "")"
-        conferenceNameLabel.text = text
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

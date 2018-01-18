@@ -7,9 +7,40 @@
 //
 
 import UIKit
+import CoreData
 
 class IdeaAuthorTableViewController: UITableViewController {
 
+    var authors : [Author] = [Author]()
+    
+    var idea : Idea?
+    
+    var previous : IdeaAddViewController?
+    lazy var context : NSManagedObjectContext = {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let persistenContainer = appDelegate.persistentContainer
+        return persistenContainer.viewContext
+    }()
+    
+    lazy var frc : NSFetchedResultsController<Author> = {
+        let req = NSFetchRequest<Author>(entityName:"Author")
+        req.sortDescriptors = [ NSSortDescriptor(key:"name", ascending:true)]
+        let _frc = NSFetchedResultsController(fetchRequest: req,
+                                              managedObjectContext: context,
+                                              sectionNameKeyPath: nil,
+                                              cacheName: nil)
+        _frc.delegate = self
+        try? _frc.performFetch()
+        return _frc
+    }()
+    
+    @IBAction func selectionFinished(_ sender: Any) {
+        if authors.count > 0  {
+            idea?.authors = NSSet(array: authors)
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,32 +59,44 @@ class IdeaAuthorTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return frc.sections?.count ?? 0
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        if let section = frc.sections?[section] {
+            return section.numberOfObjects
+        }
         return 0
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        var author : Author
+        author = frc.object(at: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "IdeaAuthorsSelectionCell", for: indexPath) as! AuthorTableViewCell
+        cell.author = author
+        let name = author.name!
+        let surname = author.surname!
+        cell.authorNameLabel.text = "\(surname), \(name)"
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    // MARK: - Selection
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var author : Author
+        author = frc.object(at: indexPath)
+        authors.append(author)
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        var author : Author
+        author = frc.object(at: indexPath)
+        if authors.contains(author) {
+            let index = authors.index(of: author)
+            authors.remove(at: index!)
+        }
+    }
+    
 
     /*
     // Override to support editing the table view.
@@ -92,4 +135,46 @@ class IdeaAuthorTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension IdeaAuthorTableViewController : NSFetchedResultsControllerDelegate {
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        
+        switch type {
+        case .delete:
+            let indexSet = IndexSet(arrayLiteral: sectionIndex)
+            tableView.deleteSections(indexSet, with: .fade)
+        case .insert:
+            let indexSet = IndexSet(arrayLiteral: sectionIndex)
+            tableView.insertSections(indexSet, with: .fade)
+        default:
+            break
+        }
+    }
+    
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch type {
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+        case .insert:
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
+        case .move:
+            tableView.moveRow(at: indexPath!, to: newIndexPath!)
+        case .update:
+            tableView.reloadRows(at: [indexPath!], with: .fade)
+        }
+        
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
 }

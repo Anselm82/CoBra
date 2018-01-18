@@ -12,16 +12,15 @@ class IdeaTableViewCell: UITableViewCell {
 
     @IBOutlet weak var ideaTitleLabel: UILabel!
     
-    var idea : Idea?
+    var idea : Idea? {
+        didSet {
+            let text = "\(idea!.title ?? "")"
+            ideaTitleLabel.text = text
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        guard idea != nil else {
-            return
-        }
-        let text = "\(idea!.title ?? "")"
-        ideaTitleLabel.text = text
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
