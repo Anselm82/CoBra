@@ -35,7 +35,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="M5H-QQ-fxq">
-                                <rect key="frame" x="143" y="273" width="88" height="120"/>
+                                <rect key="frame" x="143.5" y="273.5" width="88" height="120"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YjK-0d-5iL">
                                         <rect key="frame" x="0.0" y="0.0" width="88" height="30"/>
@@ -199,21 +199,21 @@
         <!--Master-->
         <scene sceneID="smW-Zh-WAh">
             <objects>
-                <tableViewController title="Master" clearsSelectionOnViewWillAppear="NO" id="7bK-jq-Zjz" customClass="AuthorsTableViewController" customModule="CoBra" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Master" clearsSelectionOnViewWillAppear="NO" id="7bK-jq-Zjz" customClass="AuthorTableViewController" customModule="CoBra" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="r7i-6Z-zg0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AuthorCell" textLabel="Arm-wq-HPj" style="IBUITableViewCellStyleDefault" id="WCw-Qf-5nD" customClass="AuthorTableViewCell" customModule="CoBra" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AuthorCell" textLabel="Arm-wq-HPj" style="IBUITableViewCellStyleDefault" id="WCw-Qf-5nD" customClass="AuthorTableViewCell" customModule="CoBra" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
-                                    <rect key="frame" x="0.0" y="0.0" width="307" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Author name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Arm-wq-HPj">
-                                            <rect key="frame" x="16" y="0.0" width="291" height="43.5"/>
+                                            <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -223,7 +223,8 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <segue destination="emG-1A-bVM" kind="showDetail" identifier="showAuthorDetails" id="QfG-EJ-392"/>
+                                    <outlet property="authorNameLabel" destination="Arm-wq-HPj" id="l9M-U6-IcE"/>
+                                    <segue destination="emG-1A-bVM" kind="showDetail" identifier="showAuthorDetail" id="QfG-EJ-392"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -236,7 +237,9 @@
                     <navigationItem key="navigationItem" title="Authors" id="Zdf-7t-Un8">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="4Eh-gM-tRF">
                             <connections>
-                                <segue destination="KpK-9B-MQk" kind="presentation" identifier="addAuthor" id="KEj-nF-yas"/>
+                                <segue destination="KpK-9B-MQk" kind="popoverPresentation" identifier="addAuthor" popoverAnchorBarButtonItem="4Eh-gM-tRF" id="KEj-nF-yas">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
                             </connections>
                         </barButtonItem>
                         <connections>
@@ -251,7 +254,7 @@
         <!--Ideas-->
         <scene sceneID="O9F-an-4Gb">
             <objects>
-                <tableViewController id="3xJ-tA-dhX" sceneMemberID="viewController">
+                <tableViewController id="3xJ-tA-dhX" customClass="IdeaTableViewController" customModule="CoBra" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ekd-zd-Z4l">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -315,7 +318,7 @@
         <!--Add Idea-->
         <scene sceneID="617-iv-6Vh">
             <objects>
-                <viewController id="C7G-eD-DgP" sceneMemberID="viewController">
+                <viewController id="C7G-eD-DgP" customClass="IdeaAddViewController" customModule="CoBra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NUl-YZ-OmP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -637,7 +640,7 @@
         <!--Add Author-->
         <scene sceneID="ncN-hv-ULZ">
             <objects>
-                <viewController id="fU3-Up-H6n" customClass="AddAuthorViewController" customModule="CoBra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fU3-Up-H6n" customClass="AuthorAddViewController" customModule="CoBra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oZA-S5-Ime">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -648,11 +651,15 @@
                                 <items>
                                     <barButtonItem systemItem="cancel" id="NBm-sc-KDP">
                                         <connections>
-                                            <action selector="goBackToOneButtonTapped:" destination="fU3-Up-H6n" id="dBD-kP-Dis"/>
+                                            <action selector="cancel:" destination="fU3-Up-H6n" id="vB8-gc-wLG"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="xPs-Zb-sxu"/>
-                                    <barButtonItem systemItem="save" id="6aD-pt-mHJ"/>
+                                    <barButtonItem systemItem="save" id="6aD-pt-mHJ">
+                                        <connections>
+                                            <action selector="saveAuthor:" destination="fU3-Up-H6n" id="epc-OF-3MB"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p64-km-klC">
@@ -717,6 +724,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Add Author" id="YlX-4f-bv5"/>
                     <connections>
+                        <outlet property="authorAffiliationTextField" destination="Ysd-7Q-w8y" id="acN-bo-Fw9"/>
+                        <outlet property="authorNameTextField" destination="Evg-1p-5Xb" id="CPF-7e-Bvo"/>
+                        <outlet property="authorSurnameTextField" destination="Qt8-Zf-gCs" id="iTf-Bg-4pM"/>
                         <segue destination="RHD-ed-Yoz" kind="unwind" identifier="unwindToAuthorTableViewControllerWithSegue" unwindAction="unwindToAuthorTableViewControllerWithSegue:" id="Q1R-zH-lMG"/>
                     </connections>
                 </viewController>

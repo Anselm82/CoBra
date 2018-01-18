@@ -1,14 +1,14 @@
 //
-//  AddAuthorViewController.swift
+//  IdeaAddViewController.swift
 //  CoBra
 //
-//  Created by Juan José Hernández Alonso on 16/1/18.
+//  Created by Juan José Hernández Alonso on 18/1/18.
 //  Copyright © 2018 Universidad San Jorge. All rights reserved.
 //
 
 import UIKit
 
-class AddAuthorViewController: UIViewController {
+class IdeaAddViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,9 +31,5 @@ class AddAuthorViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
-    @IBAction func goBackToOneButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: "unwindToAuthorTableViewControllerWithSegue", sender: self)
-    }
 
 }

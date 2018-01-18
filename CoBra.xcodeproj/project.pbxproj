@@ -9,13 +9,16 @@
 /* Begin PBXBuildFile section */
 		43206BD1200CDFD9005FAFBE /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43206BD0200CDFD9005FAFBE /* DetailViewController.swift */; };
 		43206BD3200CDFFC005FAFBE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43206BD2200CDFFC005FAFBE /* MainViewController.swift */; };
-		432C763C200E8E03004146CD /* AuthorsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C763B200E8E03004146CD /* AuthorsTableViewController.swift */; };
-		432C763E200E8E3F004146CD /* AddAuthorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C763D200E8E3F004146CD /* AddAuthorViewController.swift */; };
+		432C763C200E8E03004146CD /* AuthorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C763B200E8E03004146CD /* AuthorTableViewController.swift */; };
+		432C763E200E8E3F004146CD /* AuthorAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C763D200E8E3F004146CD /* AuthorAddViewController.swift */; };
 		432C7640200E8E64004146CD /* AuthorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C763F200E8E64004146CD /* AuthorDetailViewController.swift */; };
 		434BD421200CCA14009A0AC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434BD420200CCA14009A0AC7 /* AppDelegate.swift */; };
 		434BD424200CCA14009A0AC7 /* CoBra.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 434BD422200CCA14009A0AC7 /* CoBra.xcdatamodeld */; };
 		434BD42D200CCA14009A0AC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 434BD42C200CCA14009A0AC7 /* Assets.xcassets */; };
 		434BD430200CCA14009A0AC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 434BD42E200CCA14009A0AC7 /* LaunchScreen.storyboard */; };
+		434D65392010B8C400AD373C /* IdeaAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434D65382010B8C400AD373C /* IdeaAddViewController.swift */; };
+		434D653B2010E94D00AD373C /* IdeaAuthorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434D653A2010E94D00AD373C /* IdeaAuthorTableViewController.swift */; };
+		434D653D2010E96E00AD373C /* IdeaConferenceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434D653C2010E96E00AD373C /* IdeaConferenceTableViewController.swift */; };
 		4389A939200FAA020045C94E /* Conferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4389A938200FAA020045C94E /* Conferences.plist */; };
 		4389A93B200FABA70045C94E /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389A93A200FABA60045C94E /* MasterViewController.swift */; };
 		4389A93D200FB0000045C94E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389A93C200FB0000045C94E /* Constants.swift */; };
@@ -32,8 +35,8 @@
 /* Begin PBXFileReference section */
 		43206BD0200CDFD9005FAFBE /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		43206BD2200CDFFC005FAFBE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		432C763B200E8E03004146CD /* AuthorsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorsTableViewController.swift; sourceTree = "<group>"; };
-		432C763D200E8E3F004146CD /* AddAuthorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAuthorViewController.swift; sourceTree = "<group>"; };
+		432C763B200E8E03004146CD /* AuthorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorTableViewController.swift; sourceTree = "<group>"; };
+		432C763D200E8E3F004146CD /* AuthorAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorAddViewController.swift; sourceTree = "<group>"; };
 		432C763F200E8E64004146CD /* AuthorDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorDetailViewController.swift; sourceTree = "<group>"; };
 		434BD41D200CCA14009A0AC7 /* CoBra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoBra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		434BD420200CCA14009A0AC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +44,9 @@
 		434BD42C200CCA14009A0AC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		434BD42F200CCA14009A0AC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		434BD431200CCA14009A0AC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		434D65382010B8C400AD373C /* IdeaAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaAddViewController.swift; sourceTree = "<group>"; };
+		434D653A2010E94D00AD373C /* IdeaAuthorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaAuthorTableViewController.swift; sourceTree = "<group>"; };
+		434D653C2010E96E00AD373C /* IdeaConferenceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaConferenceTableViewController.swift; sourceTree = "<group>"; };
 		4389A938200FAA020045C94E /* Conferences.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Conferences.plist; sourceTree = "<group>"; };
 		4389A93A200FABA60045C94E /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		4389A93C200FB0000045C94E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -68,8 +74,8 @@
 		432C7641200E8E6A004146CD /* Author */ = {
 			isa = PBXGroup;
 			children = (
-				432C763B200E8E03004146CD /* AuthorsTableViewController.swift */,
-				432C763D200E8E3F004146CD /* AddAuthorViewController.swift */,
+				432C763B200E8E03004146CD /* AuthorTableViewController.swift */,
+				432C763D200E8E3F004146CD /* AuthorAddViewController.swift */,
 				432C763F200E8E64004146CD /* AuthorDetailViewController.swift */,
 				43A657EE200F6DDB008B9F38 /* AuthorTableViewCell.swift */,
 			);
@@ -129,6 +135,9 @@
 				43A657F4200F782F008B9F38 /* IdeaTableViewCell.swift */,
 				43A657F6200F7B1F008B9F38 /* IdeaTableViewController.swift */,
 				43A657FA200F7C01008B9F38 /* IdeaDetailViewController.swift */,
+				434D65382010B8C400AD373C /* IdeaAddViewController.swift */,
+				434D653A2010E94D00AD373C /* IdeaAuthorTableViewController.swift */,
+				434D653C2010E96E00AD373C /* IdeaConferenceTableViewController.swift */,
 			);
 			path = Idea;
 			sourceTree = "<group>";
@@ -210,16 +219,19 @@
 				43A657FD200F7C1B008B9F38 /* ConferenceDetailViewController.swift in Sources */,
 				43A657F9200F7B2E008B9F38 /* ConferenceTableViewController.swift in Sources */,
 				43A657F7200F7B1F008B9F38 /* IdeaTableViewController.swift in Sources */,
-				432C763E200E8E3F004146CD /* AddAuthorViewController.swift in Sources */,
+				432C763E200E8E3F004146CD /* AuthorAddViewController.swift in Sources */,
 				4389A93B200FABA70045C94E /* MasterViewController.swift in Sources */,
 				43A657F5200F782F008B9F38 /* IdeaTableViewCell.swift in Sources */,
 				4389A93D200FB0000045C94E /* Constants.swift in Sources */,
 				43A657EF200F6DDB008B9F38 /* AuthorTableViewCell.swift in Sources */,
 				434BD421200CCA14009A0AC7 /* AppDelegate.swift in Sources */,
-				432C763C200E8E03004146CD /* AuthorsTableViewController.swift in Sources */,
+				434D653D2010E96E00AD373C /* IdeaConferenceTableViewController.swift in Sources */,
+				434D65392010B8C400AD373C /* IdeaAddViewController.swift in Sources */,
+				432C763C200E8E03004146CD /* AuthorTableViewController.swift in Sources */,
 				434BD424200CCA14009A0AC7 /* CoBra.xcdatamodeld in Sources */,
 				43A657F3200F7805008B9F38 /* ConferenceTableViewCell.swift in Sources */,
 				43A657FB200F7C01008B9F38 /* IdeaDetailViewController.swift in Sources */,
+				434D653B2010E94D00AD373C /* IdeaAuthorTableViewController.swift in Sources */,
 				432C7640200E8E64004146CD /* AuthorDetailViewController.swift in Sources */,
 				43206BD3200CDFFC005FAFBE /* MainViewController.swift in Sources */,
 			);

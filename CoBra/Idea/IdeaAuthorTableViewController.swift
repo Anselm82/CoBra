@@ -1,14 +1,14 @@
 //
-//  AuthorsTableViewController.swift
+//  IdeaAuthorTableViewController.swift
 //  CoBra
 //
-//  Created by Juan José Hernández Alonso on 16/1/18.
+//  Created by Juan José Hernández Alonso on 18/1/18.
 //  Copyright © 2018 Universidad San Jorge. All rights reserved.
 //
 
 import UIKit
 
-class AuthorsTableViewController: UITableViewController {
+class IdeaAuthorTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,5 +92,4 @@ class AuthorsTableViewController: UITableViewController {
     }
     */
 
-    @IBAction func unwindToAuthorTableViewController(segue:UIStoryboardSegue) { }
 }
