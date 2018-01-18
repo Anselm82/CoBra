@@ -12,6 +12,9 @@ import CoreData
 class IdeaAddViewController: UIViewController {
 
     var idea : Idea?
+    var authors : [Author]?
+    
+    @IBOutlet weak var authorsButton: UIButton!
     
     lazy var context : NSManagedObjectContext = {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -24,6 +27,20 @@ class IdeaAddViewController: UIViewController {
         idea = (NSEntityDescription.insertNewObject(forEntityName: "Idea", into: context) as! Idea)
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        if authors?.count ?? 0 > 0 {
+            var text = ""
+            var count = 0
+            for author in authors! {
+                text += "\(String(describing: author.name)) \(String(describing: author.surname))"
+                if count != authors?.count {
+                    text += ", "
+                }
+                count += 1
+            }
+            authorsButton.titleLabel?.text = text
+        }
+    }
     
     // MARK: - Navigation
 
@@ -31,7 +48,7 @@ class IdeaAddViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "selectAuthor" {
             let ideaAuthorTableViewController = segue.destination  as! IdeaAuthorTableViewController
-            ideaAuthorTableViewController.idea = idea
+            ideaAuthorTableViewController.previous = self
         }
     }
 

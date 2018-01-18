@@ -14,16 +14,16 @@ class AuthorDetailViewController: UIViewController {
     @IBOutlet weak var authorSurnameLabel: UILabel!
     @IBOutlet weak var authorAffiliationLabel: UILabel!
     
-    var author : Author? {
-        didSet {
-            authorNameLabel.text = author!.name
-            authorSurnameLabel.text = author!.surname
-            authorAffiliationLabel.text = author!.affiliation
-        }
-    }
+    var author : Author?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard author != nil else {
+            return
+        }
+        authorNameLabel.text = author!.name
+        authorSurnameLabel.text = author!.surname
+        authorAffiliationLabel.text = author!.affiliation
     }
 
     /*

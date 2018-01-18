@@ -84,7 +84,8 @@ class AuthorTableViewController: UITableViewController {
             var author: Author
             if let row = tableView.indexPathForSelectedRow?.row {
                 author = frc.object(at: IndexPath(row:row, section:0))
-                let detailViewController = segue.destination as! AuthorDetailViewController
+                let navigationViewController = segue.destination as! UINavigationController
+                let detailViewController = navigationViewController.viewControllers.first as! AuthorDetailViewController
                 detailViewController.author = author
             }
         }

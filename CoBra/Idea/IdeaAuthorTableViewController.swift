@@ -12,10 +12,8 @@ import CoreData
 class IdeaAuthorTableViewController: UITableViewController {
 
     var authors : [Author] = [Author]()
-    
-    var idea : Idea?
-    
     var previous : IdeaAddViewController?
+    
     lazy var context : NSManagedObjectContext = {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let persistenContainer = appDelegate.persistentContainer
@@ -36,7 +34,7 @@ class IdeaAuthorTableViewController: UITableViewController {
     
     @IBAction func selectionFinished(_ sender: Any) {
         if authors.count > 0  {
-            idea?.authors = NSSet(array: authors)
+            previous?.authors = authors
         }
         dismiss(animated: true, completion: nil)
     }
@@ -92,8 +90,8 @@ class IdeaAuthorTableViewController: UITableViewController {
         var author : Author
         author = frc.object(at: indexPath)
         if authors.contains(author) {
-            let index = authors.index(of: author)
-            authors.remove(at: index!)
+            let index = authors.index(of: author)!
+            authors.remove(at: index)
         }
     }
     

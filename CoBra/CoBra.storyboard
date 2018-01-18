@@ -377,17 +377,19 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FR2-wo-A5F"/>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem systemItem="cancel" id="Dhp-mS-8CI">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Add Idea" id="Di2-6s-ChN">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Dhp-mS-8CI">
                             <connections>
                                 <segue destination="zA3-FX-RAM" kind="unwind" unwindAction="unwindToAuthorTableViewControllerWithSegue:" id="Nj8-Od-Zwp"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="PFg-3Q-xfi"/>
-                        <barButtonItem systemItem="save" id="NEE-s2-gzS"/>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" title="Add Idea" id="Di2-6s-ChN"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="NEE-s2-gzS"/>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="authorsButton" destination="M7b-Nu-ACQ" id="aQA-zK-kte"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AgX-4f-kCE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zA3-FX-RAM" userLabel="Exit" sceneMemberID="exit"/>
@@ -428,9 +430,10 @@
                     </tableView>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="JJE-MW-CBW"/>
-                        <barButtonItem systemItem="done" id="Kbv-FK-SWC"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Idea Conference" id="5FM-7w-kMk"/>
+                    <navigationItem key="navigationItem" title="Idea Conference" id="5FM-7w-kMk">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Kbv-FK-SWC"/>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EwS-B1-r2C" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -560,9 +563,10 @@
                     </view>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="7XQ-NX-swN"/>
-                        <barButtonItem title="Export" id="ez8-Rt-Spp"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Idea Details" id="zBp-eo-Esc"/>
+                    <navigationItem key="navigationItem" title="Idea Details" id="zBp-eo-Esc">
+                        <barButtonItem key="rightBarButtonItem" title="Export" id="ez8-Rt-Spp"/>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="authorsTableView" destination="ZKJ-Wt-E9V" id="QpK-Ga-Qm0"/>
@@ -599,23 +603,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hCE-5k-LzG">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem systemItem="cancel" id="NBm-sc-KDP">
-                                        <connections>
-                                            <action selector="cancel:" destination="fU3-Up-H6n" id="vB8-gc-wLG"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="xPs-Zb-sxu"/>
-                                    <barButtonItem systemItem="save" id="6aD-pt-mHJ">
-                                        <connections>
-                                            <action selector="saveAuthor:" destination="fU3-Up-H6n" id="epc-OF-3MB"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p64-km-klC">
                                 <rect key="frame" x="20" y="84" width="335" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -676,7 +663,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NPe-aM-mrj"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Author" id="YlX-4f-bv5"/>
+                    <navigationItem key="navigationItem" title="Add Author" id="YlX-4f-bv5">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="NBm-sc-KDP">
+                            <connections>
+                                <action selector="cancel:" destination="fU3-Up-H6n" id="vB8-gc-wLG"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="6aD-pt-mHJ">
+                            <connections>
+                                <action selector="saveAuthor:" destination="fU3-Up-H6n" id="epc-OF-3MB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="authorAffiliationTextField" destination="Ysd-7Q-w8y" id="acN-bo-Fw9"/>
                         <outlet property="authorNameTextField" destination="Evg-1p-5Xb" id="CPF-7e-Bvo"/>
@@ -1023,15 +1021,14 @@
                             <outlet property="delegate" destination="l1Z-5d-PXA" id="EM8-ff-PNC"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="lG1-Kk-TWW"/>
-                        <barButtonItem systemItem="done" id="oTa-Rr-WQk">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Idea Authors" id="QDe-4t-3Kv">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="oTa-Rr-WQk">
                             <connections>
                                 <action selector="selectionFinished:" destination="l1Z-5d-PXA" id="bQ3-aR-OCY"/>
                             </connections>
                         </barButtonItem>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" title="Idea Authors" id="QDe-4t-3Kv"/>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M00-wy-LTV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1195,11 +1192,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5PM-jn-fwC"/>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="4Qq-5i-iR7"/>
-                        <barButtonItem systemItem="done" id="bhC-Fo-FMr"/>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" title="Conference Details" id="ffX-0r-8eI"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Conference Details" id="ffX-0r-8eI">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="bhC-Fo-FMr"/>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WRh-Gv-c0f" userLabel="First Responder" sceneMemberID="firstResponder"/>
