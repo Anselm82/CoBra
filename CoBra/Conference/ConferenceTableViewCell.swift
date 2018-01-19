@@ -14,7 +14,7 @@ class ConferenceTableViewCell: UITableViewCell {
     
     var conference : Conference? {
         didSet {
-            let text = "\(conference!.name ?? "")"
+            let text = "\(conference!.acronym ?? "")"
             conferenceNameLabel.text = text
         }
     }
