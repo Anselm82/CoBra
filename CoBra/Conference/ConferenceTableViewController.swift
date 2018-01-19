@@ -53,7 +53,7 @@ class ConferenceTableViewController: UITableViewController {
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Candies"
+        searchController.searchBar.placeholder = "Search Conferences"
         definesPresentationContext = true
         
         self.downloadConferencesList(nil)
@@ -124,7 +124,7 @@ class ConferenceTableViewController: UITableViewController {
             conference = frc.object(at: indexPath)
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCell", for: indexPath) as! ConferenceTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ConferenceCell", for: indexPath) as! ConferenceTableViewCell
         
         cell.conferenceNameLabel.text = conference.acronym
         

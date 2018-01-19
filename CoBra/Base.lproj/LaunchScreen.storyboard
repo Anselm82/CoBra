@@ -18,19 +18,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="AHY-aK-nuS">
-                                <rect key="frame" x="87.5" y="233.5" width="200" height="200"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Name" translatesAutoresizingMaskIntoConstraints="NO" id="bo2-mJ-l1k">
-                                <rect key="frame" x="46" y="557" width="282" height="90"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="Dtd-92-UZY">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="bo2-mJ-l1k" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="83L-Ni-M4f"/>
-                            <constraint firstItem="AHY-aK-nuS" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="99f-Gi-oAS"/>
-                            <constraint firstItem="AHY-aK-nuS" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="efL-lZ-TEs"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bo2-mJ-l1k" secondAttribute="bottom" constant="20" id="gwj-Tk-YJ8"/>
+                            <constraint firstItem="Dtd-92-UZY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8il-aD-8Wj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Dtd-92-UZY" secondAttribute="trailing" id="A7a-pk-qiY"/>
+                            <constraint firstItem="Dtd-92-UZY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="NDW-Kx-QVJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Dtd-92-UZY" secondAttribute="bottom" id="nKw-al-ahd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -41,7 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Logo" width="200" height="200"/>
-        <image name="Name" width="282" height="90"/>
+        <image name="LaunchScreen" width="377" height="669"/>
     </resources>
 </document>

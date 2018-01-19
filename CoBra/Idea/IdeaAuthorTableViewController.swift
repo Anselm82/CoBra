@@ -40,7 +40,7 @@ class IdeaAuthorTableViewController: UITableViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,7 +63,7 @@ class IdeaAuthorTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let author = frc.object(at: indexPath)
-        let cell = tableView.dequeueReusableCell(withIdentifier: "IdeaDetailCell", for: indexPath) as! AuthorTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "IdeaAuthorsSelectionCell", for: indexPath) as! AuthorTableViewCell
         cell.author = author
         let name = author.name!
         let surname = author.surname!
