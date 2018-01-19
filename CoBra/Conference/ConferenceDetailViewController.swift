@@ -22,8 +22,27 @@ class ConferenceDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        guard conference != nil else {
+            return
+        }
+        
+        conferenceNameLabel.text = conference?.name
+        acronymLabel.text = conference?.acronym
+        addressLabel.text = conference?.location
+        websiteLabel.text = conference?.website
+        rankingLabel.text = conference?.ranking
+        
+        // Convert dates to strings
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MMM-yyyy hh:mm:ss"
+        let abstractDate = formatter.string(from: (conference?.abstract_deadline)!)
+        let articleDate = formatter.string(from: (conference?.article_deadline)!)
+        
+        abstractDeadlineLabel.text = abstractDate
+        articleDeadlineLabel.text = articleDate
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
