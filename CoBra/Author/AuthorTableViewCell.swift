@@ -10,7 +10,6 @@ import UIKit
 
 class AuthorTableViewCell: UITableViewCell {
 
-    
     @IBOutlet weak var authorNameLabel: UILabel!
     
     var author : Author? {
@@ -23,5 +22,4 @@ class AuthorTableViewCell: UITableViewCell {
             }
         }
     }
-
 }

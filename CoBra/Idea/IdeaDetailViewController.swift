@@ -10,6 +10,7 @@ import UIKit
 
 class IdeaDetailViewController: UIViewController {
     
+    
     @IBOutlet weak var ideaTitleLabel: UILabel!
     @IBOutlet weak var ideaDescriptionTextView: UITextView!
     @IBOutlet weak var conferenceNameButton: UIButton!
@@ -19,27 +20,23 @@ class IdeaDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        authorsTableView.dataSource = self
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
         guard idea != nil else {
             return
         }
         ideaTitleLabel.text = idea!.title
         ideaDescriptionTextView.text = idea!.idea_description
-        conferenceNameButton.titleLabel?.text = idea!.conference?.name ?? "No conference"
-        if idea!.authors?.count ?? 0 > 0 {
-            for author in idea!.authors! {
-                let cell = AuthorTableViewCell()
-                cell.author = (author as! Author)
-                authorsTableView.addSubview(cell)
-            }
-        }
+        conferenceNameButton.setTitle(idea!.conference?.name ?? "No conference", for: .normal)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -51,3 +48,27 @@ class IdeaDetailViewController: UIViewController {
     */
 
 }
+
+extension IdeaDetailViewController : UITableViewDataSource {
+    
+    // MARK: - Table view data source
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return idea?.authors?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var author : Author
+        author = idea?.authors?.allObjects[indexPath.row] as! Author
+        let cell = authorsTableView.dequeueReusableCell(withIdentifier: "IdeaAuthorCell", for: indexPath) as! AuthorTableViewCell
+        cell.author = author
+        return cell
+    }
+    
+}
+
+
