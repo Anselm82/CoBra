@@ -10,7 +10,9 @@ import UIKit
 import CoreData
 
 class AuthorTableViewController: UITableViewController {
-
+    
+    @IBOutlet weak var addButtonItem: UIBarButtonItem!
+    
     lazy var context : NSManagedObjectContext = {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let persistenContainer = appDelegate.persistentContainer
@@ -31,9 +33,9 @@ class AuthorTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        self.navigationItem.rightBarButtonItems = [self.addButtonItem, self.editButtonItem]
     }
 
     // MARK: - Table view data source
@@ -59,17 +61,15 @@ class AuthorTableViewController: UITableViewController {
         return cell
     }
     
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            let country = frc.object(at: indexPath)
+            context.delete(country)
+        }
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.

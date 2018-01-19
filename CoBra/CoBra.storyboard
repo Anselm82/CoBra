@@ -210,10 +210,10 @@
                                 </segue>
                             </connections>
                         </barButtonItem>
-                        <connections>
-                            <outlet property="rightBarButtonItem" destination="4Eh-gM-tRF" id="jFv-VV-Bxj"/>
-                        </connections>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addButtonItem" destination="4Eh-gM-tRF" id="ncq-B9-gnj"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
