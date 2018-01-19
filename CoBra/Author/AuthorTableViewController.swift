@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+
 class AuthorTableViewController: UITableViewController {
 
     lazy var context : NSManagedObjectContext = {
@@ -18,7 +19,7 @@ class AuthorTableViewController: UITableViewController {
     
     lazy var frc : NSFetchedResultsController<Author> = {
         let req = NSFetchRequest<Author>(entityName:"Author")
-        req.sortDescriptors = [ NSSortDescriptor(key:"name", ascending:true)]
+        req.sortDescriptors = [ NSSortDescriptor(key:"surname", ascending:true)]
         let _frc = NSFetchedResultsController(fetchRequest: req,
                                               managedObjectContext: context,
                                               sectionNameKeyPath: nil,

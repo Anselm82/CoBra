@@ -11,7 +11,6 @@ import CoreData
 
 class IdeaAuthorTableViewController: UITableViewController {
 
-    var authors : [Author] = [Author]()
     var previous : IdeaAddViewController?
     
     lazy var context : NSManagedObjectContext = {
@@ -33,18 +32,13 @@ class IdeaAuthorTableViewController: UITableViewController {
     }()
     
     @IBAction func selectionFinished(_ sender: Any) {
-        if authors.count > 0  {
-            previous?.authors = authors
-        }
         dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
@@ -68,30 +62,37 @@ class IdeaAuthorTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var author : Author
-        author = frc.object(at: indexPath)
+        let author = frc.object(at: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "IdeaAuthorsSelectionCell", for: indexPath) as! AuthorTableViewCell
         cell.author = author
         let name = author.name!
         let surname = author.surname!
         cell.authorNameLabel.text = "\(surname), \(name)"
+        
         return cell
     }
     
     // MARK: - Selection
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let author = frc.object(at: indexPath)
+        if previous!.authors.contains(author) {
+            cell.isSelected = true
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var author : Author
         author = frc.object(at: indexPath)
-        authors.append(author)
+        previous!.authors.append(author)
     }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         var author : Author
         author = frc.object(at: indexPath)
-        if authors.contains(author) {
-            let index = authors.index(of: author)!
-            authors.remove(at: index)
+        if previous!.authors.contains(author) {
+            let index = previous!.authors.index(of: author)!
+            previous!.authors.remove(at: index)
         }
     }
     

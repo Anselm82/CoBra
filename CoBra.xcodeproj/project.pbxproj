@@ -29,6 +29,7 @@
 		43A657FB200F7C01008B9F38 /* IdeaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A657FA200F7C01008B9F38 /* IdeaDetailViewController.swift */; };
 		43A657FD200F7C1B008B9F38 /* ConferenceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A657FC200F7C1B008B9F38 /* ConferenceDetailViewController.swift */; };
 		43D8465B200CDAFD007BD746 /* CoBra.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43D8465A200CDAFC007BD746 /* CoBra.storyboard */; };
+		43EC251A20115CC900ECC094 /* UIBorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EC251920115CC900ECC094 /* UIBorderButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		43A657FA200F7C01008B9F38 /* IdeaDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaDetailViewController.swift; sourceTree = "<group>"; };
 		43A657FC200F7C1B008B9F38 /* ConferenceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceDetailViewController.swift; sourceTree = "<group>"; };
 		43D8465A200CDAFC007BD746 /* CoBra.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CoBra.storyboard; sourceTree = "<group>"; };
+		43EC251920115CC900ECC094 /* UIBorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBorderButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				434BD431200CCA14009A0AC7 /* Info.plist */,
 				434BD422200CCA14009A0AC7 /* CoBra.xcdatamodeld */,
 				4389A938200FAA020045C94E /* Conferences.plist */,
+				43EC251920115CC900ECC094 /* UIBorderButton.swift */,
 			);
 			path = CoBra;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 				43A657F5200F782F008B9F38 /* IdeaTableViewCell.swift in Sources */,
 				4389A93D200FB0000045C94E /* Constants.swift in Sources */,
 				43A657EF200F6DDB008B9F38 /* AuthorTableViewCell.swift in Sources */,
+				43EC251A20115CC900ECC094 /* UIBorderButton.swift in Sources */,
 				434BD421200CCA14009A0AC7 /* AppDelegate.swift in Sources */,
 				434D653D2010E96E00AD373C /* IdeaConferenceTableViewController.swift in Sources */,
 				434D65392010B8C400AD373C /* IdeaAddViewController.swift in Sources */,
