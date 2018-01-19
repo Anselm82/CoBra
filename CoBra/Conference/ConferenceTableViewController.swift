@@ -215,9 +215,6 @@ extension ConferenceTableViewController {
     }
     
     func saveConferences(_ conferences: [[String:Any]]) {
-        
-        
-        
         let sortConferences = conferences.sorted { (objA, objB) -> Bool in
             if let firstAcronym = objA["acronym"] as? String,
                 let secondAcronym = objB["acronym"] as? String {
