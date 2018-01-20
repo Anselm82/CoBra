@@ -84,6 +84,7 @@ class IdeaAuthorTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var author : Author
         author = frc.object(at: indexPath)
+        previous!.idea?.addToAuthors(author)
         previous!.authors.append(author)
     }
     
@@ -92,6 +93,7 @@ class IdeaAuthorTableViewController: UITableViewController {
         author = frc.object(at: indexPath)
         if previous!.authors.contains(author) {
             let index = previous!.authors.index(of: author)!
+            previous!.idea?.removeFromAuthors(author)
             previous!.authors.remove(at: index)
         }
     }

@@ -296,9 +296,10 @@
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KYS-cV-6uG">
                                 <rect key="frame" x="78" y="80" width="277" height="30"/>
+                                <accessibility key="accessibilityConfiguration" hint="Write a title"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" textContentType="organization-title"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Az-gL-hcc">
                                 <rect key="frame" x="20" y="84" width="38" height="21"/>
@@ -521,8 +522,7 @@
                                 <rect key="frame" x="134" y="370" width="221" height="30"/>
                                 <state key="normal" title="Conference name"/>
                                 <connections>
-                                    <action selector="showConferenceDetail:" destination="ve5-jr-Gs3" eventType="touchUpInside" id="jnh-uG-f1U"/>
-                                    <segue destination="ubc-uj-g0I" kind="showDetail" identifier="showConferenceDetails" id="9VD-i7-v8m"/>
+                                    <segue destination="7Fd-Xq-1je" kind="showDetail" identifier="showConferenceDetail" id="f9G-g9-QQo"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZKJ-Wt-E9V">
@@ -634,9 +634,10 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Evg-1p-5Xb">
                                 <rect key="frame" x="20" y="121" width="335" height="30"/>
+                                <accessibility key="accessibilityConfiguration" hint="Enter your name"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Surname:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilt-PQ-zzk">
                                 <rect key="frame" x="20" y="171" width="335" height="21"/>
@@ -646,9 +647,10 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Surname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qt8-Zf-gCs">
                                 <rect key="frame" x="20" y="208" width="335" height="30"/>
+                                <accessibility key="accessibilityConfiguration" hint="Enter your surname"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Affiliation:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTu-9P-KVU">
                                 <rect key="frame" x="20" y="258" width="335" height="21"/>
@@ -658,9 +660,10 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Affiliation" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ysd-7Q-w8y">
                                 <rect key="frame" x="20" y="295" width="335" height="30"/>
+                                <accessibility key="accessibilityConfiguration" hint="Enter your affiliation"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -981,7 +984,7 @@
         <scene sceneID="r7l-gg-dq7">
             <objects>
                 <navigationController id="vC3-pB-5Vb" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="DjV-YW-jjY">
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="DjV-YW-jjY">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -992,22 +995,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLD-UC-DBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-39" y="278"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="h5E-9b-gfb">
-            <objects>
-                <navigationController id="ubc-uj-g0I" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5fZ-0M-PgF">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="SXT-W0-WwH" kind="relationship" relationship="rootViewController" id="Jf1-j6-1C2"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GWg-AQ-oHU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1745" y="2615"/>
         </scene>
         <!--Idea Authors-->
         <scene sceneID="L3B-Bf-pya">
@@ -1079,6 +1066,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pAy-SD-CYe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2652" y="1854"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="jv2-H9-2Uu">
+            <objects>
+                <navigationController id="7Fd-Xq-1je" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KK0-5o-Nhc">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="SXT-W0-WwH" kind="relationship" relationship="rootViewController" id="Xn3-PH-1Fl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dL0-zL-Q4I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1826" y="2615"/>
         </scene>
         <!--Conference Details-->
         <scene sceneID="cpv-PI-zXi">
@@ -1226,6 +1229,15 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="bhC-Fo-FMr"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="abstractDeadlineLabel" destination="xl4-We-3Tg" id="TfO-rh-AIQ"/>
+                        <outlet property="acronymLabel" destination="YA1-AK-CSM" id="BqJ-cN-1AR"/>
+                        <outlet property="addressLabel" destination="f4P-5i-FFK" id="Z0L-EA-vfc"/>
+                        <outlet property="articleDeadlineLabel" destination="ObB-x4-WNq" id="Eh3-dM-aHm"/>
+                        <outlet property="conferenceNameLabel" destination="lJD-am-lUr" id="W7M-5Q-ClZ"/>
+                        <outlet property="rankingLabel" destination="mGm-Yo-AXn" id="M4t-Tr-5hh"/>
+                        <outlet property="websiteLabel" destination="0T6-mm-3mu" id="jGG-4W-qL3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WRh-Gv-c0f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -33,8 +33,6 @@ class AuthorTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        
         self.navigationItem.rightBarButtonItems = [self.addButtonItem, self.editButtonItem]
     }
 
@@ -50,8 +48,6 @@ class AuthorTableViewController: UITableViewController {
         }
         return 0
     }
-    
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var author : Author

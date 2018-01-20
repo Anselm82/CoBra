@@ -34,10 +34,10 @@ class IdeaDetailViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showConferenceDetails" {
+        if segue.identifier == "showConferenceDetail" {
             let navigationController = segue.destination as! UINavigationController
-            let nextController = navigationController.viewControllers.first as! ConferenceDetailViewController
-            nextController.conference = idea?.conference
+            let conferenceDetailViewController = navigationController.viewControllers.first as! ConferenceDetailViewController
+            conferenceDetailViewController.conference = idea?.conference
         }
     }
 }

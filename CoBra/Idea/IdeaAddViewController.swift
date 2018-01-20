@@ -31,10 +31,7 @@ class IdeaAddViewController: UIViewController {
         guard authors.count > 0, conference != nil, idea != nil, ideaDescriptionTextView.text.count > 0, ideaTitleTextField.text?.count ?? 0 > 0, ideaDescriptionTextView.text != "Describe your idea here..." else {
             return
         }
-        let authorSet = NSSet()
-        authorSet.addingObjects(from: authors)
         idea?.title = ideaTitleTextField.text
-        idea?.addToAuthors(authorSet)
         idea?.idea_description = ideaDescriptionTextView.text
         idea?.conference = conference
         try? context.save()
