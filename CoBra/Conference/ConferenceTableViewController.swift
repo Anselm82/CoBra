@@ -212,38 +212,26 @@ extension ConferenceTableViewController : NSFetchedResultsControllerDelegate {
 extension ConferenceTableViewController {
     
     @objc func downloadConferencesList(_ control :UIRefreshControl?) {
-        
         let session = URLSession.shared
-        
         let url = URL(string: conferencesURL)!
-        
         let request = URLRequest(url: url,
                                  cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
                                  timeoutInterval: 15.0)
-        
         weak var weakSelf = self
-        
         let task = session.dataTask(with: request) { (data, response, error) in
-            
-            
             guard error == nil || data?.count ?? 0 > 0  else {
-                
                 DispatchQueue.main.async {
                     control?.endRefreshing()
                 }
-                
                 return
             }
-            
             DispatchQueue.main.async {
                 if let conferences = try? (PropertyListSerialization.propertyList(from: data!,
                                                                                 options: .mutableContainers,
                                                                                 format: nil) as! [[String:Any]]) {
                     weakSelf?.saveConferences(conferences)
                 }
-                
                 control?.endRefreshing()
-                
             }
         }
         task.resume()
@@ -312,11 +300,9 @@ extension ConferenceTableViewController {
         }
         
         while indexNew < sortConferences.count {
-            
             let newObj = sortConferences[indexNew]
             let conference = NSEntityDescription.insertNewObject(forEntityName: "Conference",
                                                               into: context) as! Conference
-           
             conference.abstract_deadline = newObj["abstract_deadline"] as? Date
             conference.article_deadline = newObj["article_deadline"] as? Date
             conference.name = newObj["name"] as? String
@@ -324,10 +310,8 @@ extension ConferenceTableViewController {
             conference.location = newObj["location"] as? String
             conference.ranking = newObj["ranking"] as? String
             conference.website = newObj["website"] as? String
-            
             indexNew += 1
         }
-        
         while indexOld < results?.count ?? 0 {
             
             let oldObj = results![indexOld]
@@ -335,7 +319,6 @@ extension ConferenceTableViewController {
             
             indexOld += 1
         }
-        
         try? context.save()
     }
 }
@@ -347,34 +330,23 @@ extension ConferenceTableViewController : UISearchControllerDelegate, UISearchRe
     }
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
-        
         let req = NSFetchRequest<Conference>(entityName:"Conference")
-        
         req.predicate = NSPredicate(format:"acronym CONTAINS[cd] %@", searchText)
-        
         req.sortDescriptors = [ NSSortDescriptor(key:"acronym", ascending:true)]
         if let results = try? context.fetch(req) {
             filteredConferences = results
         } else {
             filteredConferences = [Conference]()
         }
-        
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-        
         let searchText = searchController.searchBar.text
-        
         if textIsEmpty(searchText) {
-            
             filteredConferences = [Conference]()
-            
         } else {
-            
             filterContentForSearchText(searchText!)
-            
         }
-        
         tableView.reloadData()
     }
 }

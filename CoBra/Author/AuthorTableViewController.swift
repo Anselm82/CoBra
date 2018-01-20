@@ -65,19 +65,11 @@ class AuthorTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let country = frc.object(at: indexPath)
-            context.delete(country)
+            let author = frc.object(at: indexPath)
+            context.delete(author)
         }
     }
-    
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -127,7 +119,6 @@ extension AuthorTableViewController : NSFetchedResultsControllerDelegate {
         case .update:
             tableView.reloadRows(at: [indexPath!], with: .fade)
         }
-        
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {

@@ -16,49 +16,45 @@ class IdeaDetailViewController: UIViewController {
     @IBOutlet weak var conferenceNameButton: UIButton!
     @IBOutlet weak var authorsTableView: UITableView!
     
+    
     var idea : Idea?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        authorsTableView.dataSource = self
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
         guard idea != nil else {
             return
         }
+        authorsTableView.dataSource = self
         ideaTitleLabel.text = idea!.title
         ideaDescriptionTextView.text = idea!.idea_description
         conferenceNameButton.setTitle(idea!.conference?.name ?? "No conference", for: .normal)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "showConferenceDetails" {
+            let navigationController = segue.destination as! UINavigationController
+            let nextController = navigationController.viewControllers.first as! ConferenceDetailViewController
+            nextController.conference = idea?.conference
+        }
     }
-    */
-
 }
 
+// MARK: - Table view data source
+
 extension IdeaDetailViewController : UITableViewDataSource {
-    
-    // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return idea?.authors?.count ?? 0
+        if idea?.authors?.count ?? 0 > 0 {
+            return idea?.authors?.count ?? 0
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -17,9 +17,9 @@ class IdeaTableViewController: UITableViewController {
         return persistenContainer.viewContext
     }()
     
-    lazy var frc : NSFetchedResultsController<Author> = {
-        let req = NSFetchRequest<Author>(entityName:"Author")
-        req.sortDescriptors = [ NSSortDescriptor(key:"surname", ascending:true)]
+    lazy var frc : NSFetchedResultsController<Idea> = {
+        let req = NSFetchRequest<Idea>(entityName:"Idea")
+        req.sortDescriptors = [ NSSortDescriptor(key:"title", ascending:true)]
         let _frc = NSFetchedResultsController(fetchRequest: req,
                                               managedObjectContext: context,
                                               sectionNameKeyPath: nil,
@@ -29,113 +29,68 @@ class IdeaTableViewController: UITableViewController {
         return _frc
     }()
     
+    @IBOutlet weak var addButtonItem: UIBarButtonItem!
+    
     var idea: Idea?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.navigationItem.rightBarButtonItems = [self.addButtonItem, self.editButtonItem]
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        return frc.sections?.count ?? 0
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
+        if let section = frc.sections?[section] {
+            return section.numberOfObjects
+        }
+        return 0
     }
 
-    
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var idea : Idea
+        idea = frc.object(at: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "IdeaCell", for: indexPath) as! IdeaTableViewCell
-        cell.idea = getDummyData()
+        cell.idea = idea
         return cell
     }
-    
-    func getDummyData() -> Idea {
-        let idea = (NSEntityDescription.insertNewObject(forEntityName: "Idea", into: context) as! Idea)
-        idea.title = "Titulo"
-        idea.idea_description = "Description"
-        let juanjo = NSEntityDescription.insertNewObject(forEntityName: "Author", into: context) as! Author
-        juanjo.name = "Juanjo"
-        juanjo.surname = "Hernández"
-        juanjo.affiliation = "USJ"
-        let raul = NSEntityDescription.insertNewObject(forEntityName: "Author", into: context) as! Author
-        raul.name = "Raul"
-        raul.surname = "Lapeña"
-        raul.affiliation = "USJ"
-        idea.addToAuthors([juanjo, raul])
-        let conference = (NSEntityDescription.insertNewObject(forEntityName: "Conference", into: context) as! Conference)
-        conference.name = "Conferencia"
-        conference.acronym = "APS"
-        conference.abstract_deadline = Date()
-        conference.article_deadline = Date()
-        conference.location = "Zaragoza"
-        conference.ranking = "A*"
-        idea.conference = conference
-        return idea
-    }
 
-    /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
+ 
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
         if segue.identifier == "showIdeaDetail" {
+            var idea: Idea
+            if let row = tableView.indexPathForSelectedRow?.row {
+                idea = frc.object(at: IndexPath(row:row, section:0))
+                let nextVC = segue.destination as! UINavigationController
+                let detail = nextVC.viewControllers.first as! IdeaDetailViewController
+                detail.idea = idea
+            }
+        } else if segue.identifier == "addIdea" {
             let nextVC = segue.destination as! UINavigationController
-            let detail = nextVC.viewControllers.first as! IdeaDetailViewController
-            detail.idea = getDummyData()
+            let add = nextVC.viewControllers.first as! IdeaAddViewController
+            add.previous = self
         }
-        // Pass the selected object to the new view controller.
     }
  
 

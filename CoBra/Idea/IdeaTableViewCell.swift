@@ -14,19 +14,9 @@ class IdeaTableViewCell: UITableViewCell {
     
     var idea : Idea? {
         didSet {
-            let text = "\(idea!.title ?? "")"
+            let text = "\(idea?.title ?? "")"
             ideaTitleLabel.text = text
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -81,15 +82,24 @@
                     <view key="view" contentMode="scaleToFill" id="svH-Pt-448">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="xaN-od-B8f">
+                                <rect key="frame" x="-1.5" y="-1" width="377" height="669"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="xaN-od-B8f" firstAttribute="centerY" secondItem="svH-Pt-448" secondAttribute="centerY" id="QfC-ni-4CD"/>
+                            <constraint firstItem="xaN-od-B8f" firstAttribute="centerX" secondItem="svH-Pt-448" secondAttribute="centerX" id="mal-c8-Tjr"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="VUw-jc-0yf"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
+                    <navigationItem key="navigationItem" title="CoBra" id="mOI-FS-AaM"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-39" y="1091"/>
+            <point key="canvasLocation" x="-39.200000000000003" y="1090.704647676162"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
@@ -218,14 +228,19 @@
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Idea Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSw-eK-WBU">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Idea Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSw-eK-WBU">
                                             <rect key="frame" x="16" y="11" width="283" height="21"/>
-                                            <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="qSw-eK-WBU" firstAttribute="leading" secondItem="yAS-c5-dzR" secondAttribute="leadingMargin" id="KBi-Gy-wfM"/>
+                                        <constraint firstItem="qSw-eK-WBU" firstAttribute="top" secondItem="yAS-c5-dzR" secondAttribute="topMargin" id="OeP-fW-nSV"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="qSw-eK-WBU" secondAttribute="trailing" constant="34" id="jtY-WH-r4O"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="qSw-eK-WBU" secondAttribute="bottom" constant="1" id="sCc-7c-6MX"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="ideaTitleLabel" destination="qSw-eK-WBU" id="sa8-fU-mAt"/>
@@ -247,6 +262,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addButtonItem" destination="kuR-WJ-AsK" id="gE2-Hf-bCb"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jAy-iv-3mJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -296,6 +314,9 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7b-Nu-ACQ" customClass="UIBorderButton" customModule="CoBra" customModuleProvider="target">
                                 <rect key="frame" x="20" y="180" width="335" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="j4A-c3-1Y3"/>
+                                </constraints>
                                 <state key="normal" title="Authors"/>
                                 <connections>
                                     <segue destination="83G-OJ-oM5" kind="showDetail" identifier="selectAuthor" id="0sh-7G-n7P"/>
@@ -303,6 +324,9 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agE-oo-X5t" customClass="UIBorderButton" customModule="CoBra" customModuleProvider="target">
                                 <rect key="frame" x="20" y="130" width="335" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="hXc-Tu-DM8"/>
+                                </constraints>
                                 <state key="normal" title="Conference"/>
                                 <connections>
                                     <segue destination="7Qc-dJ-I1J" kind="showDetail" identifier="selectConference" id="Tri-AN-xZR"/>
@@ -318,6 +342,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="KYS-cV-6uG" firstAttribute="leading" secondItem="9Az-gL-hcc" secondAttribute="trailing" constant="20" id="2hD-mN-Ged"/>
+                            <constraint firstItem="FR2-wo-A5F" firstAttribute="bottom" secondItem="8b3-AJ-E5z" secondAttribute="bottom" constant="20" id="6w3-kK-zhR"/>
                             <constraint firstItem="34z-wd-PO1" firstAttribute="leading" secondItem="FR2-wo-A5F" secondAttribute="leading" constant="20" id="9k2-Vl-bjJ"/>
                             <constraint firstItem="KYS-cV-6uG" firstAttribute="trailing" secondItem="agE-oo-X5t" secondAttribute="trailing" id="BZj-1E-C41"/>
                             <constraint firstItem="FR2-wo-A5F" firstAttribute="trailing" secondItem="8b3-AJ-E5z" secondAttribute="trailing" constant="20" id="Irr-Pz-Max"/>
@@ -329,7 +354,6 @@
                             <constraint firstItem="9Az-gL-hcc" firstAttribute="leading" secondItem="FR2-wo-A5F" secondAttribute="leading" constant="20" id="Z7N-zE-lVV"/>
                             <constraint firstItem="34z-wd-PO1" firstAttribute="top" secondItem="M7b-Nu-ACQ" secondAttribute="bottom" constant="20" id="e7d-l6-R7o"/>
                             <constraint firstItem="M7b-Nu-ACQ" firstAttribute="leading" secondItem="FR2-wo-A5F" secondAttribute="leading" constant="20" id="l4k-67-fSt"/>
-                            <constraint firstItem="FR2-wo-A5F" firstAttribute="bottom" secondItem="8b3-AJ-E5z" secondAttribute="bottom" constant="20" id="nFi-lw-vkJ"/>
                             <constraint firstItem="M7b-Nu-ACQ" firstAttribute="top" secondItem="agE-oo-X5t" secondAttribute="bottom" constant="20" id="pDU-ZJ-YrA"/>
                             <constraint firstItem="8b3-AJ-E5z" firstAttribute="top" secondItem="34z-wd-PO1" secondAttribute="bottom" constant="20" id="qN3-QK-VmJ"/>
                             <constraint firstItem="FR2-wo-A5F" firstAttribute="trailing" secondItem="agE-oo-X5t" secondAttribute="trailing" constant="20" id="szM-NH-cot"/>
@@ -344,12 +368,18 @@
                                 <action selector="cancel:" destination="C7G-eD-DgP" id="SDE-6m-D0B"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="NEE-s2-gzS"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="NEE-s2-gzS">
+                            <connections>
+                                <action selector="save:" destination="C7G-eD-DgP" id="lzl-Kp-Gww"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="authorsButton" destination="M7b-Nu-ACQ" id="aQA-zK-kte"/>
+                        <outlet property="conferenceButton" destination="agE-oo-X5t" id="kGE-yp-Boc"/>
                         <outlet property="ideaDescriptionTextView" destination="8b3-AJ-E5z" id="hBF-rV-3pU"/>
+                        <outlet property="ideaTitleTextField" destination="KYS-cV-6uG" id="aSz-kc-mDJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AgX-4f-kCE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -359,13 +389,13 @@
         <!--Idea Conference-->
         <scene sceneID="kr7-VB-zzS">
             <objects>
-                <tableViewController id="h2v-er-Ajh" sceneMemberID="viewController">
+                <tableViewController id="h2v-er-Ajh" customClass="IdeaConferenceTableViewController" customModule="CoBra" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CCf-HW-Psi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConferenceSelectionCell" id="9dt-RC-uoS">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IdeaConferenceSelectionCell" id="9dt-RC-uoS" customClass="ConferenceTableViewCell" customModule="CoBra" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9dt-RC-uoS" id="btZ-aa-t0Z">
@@ -381,6 +411,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="conferenceNameLabel" destination="Nc0-bg-d8C" id="U0t-xT-BRI"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -392,7 +425,11 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="JJE-MW-CBW"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Idea Conference" id="5FM-7w-kMk">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Kbv-FK-SWC"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Kbv-FK-SWC">
+                            <connections>
+                                <action selector="selectionFinished:" destination="h2v-er-Ajh" id="ghn-hC-iLT"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
@@ -484,7 +521,8 @@
                                 <rect key="frame" x="134" y="370" width="221" height="30"/>
                                 <state key="normal" title="Conference name"/>
                                 <connections>
-                                    <segue destination="ubc-uj-g0I" kind="showDetail" id="9VD-i7-v8m"/>
+                                    <action selector="showConferenceDetail:" destination="ve5-jr-Gs3" eventType="touchUpInside" id="jnh-uG-f1U"/>
+                                    <segue destination="ubc-uj-g0I" kind="showDetail" identifier="showConferenceDetails" id="9VD-i7-v8m"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZKJ-Wt-E9V">
@@ -987,14 +1025,20 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Author name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2H-8k-mz7">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2H-8k-mz7">
                                             <rect key="frame" x="16" y="12" width="343" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="343" id="rT0-oM-9Qy"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="D2H-8k-mz7" firstAttribute="leading" secondItem="bWo-WB-akl" secondAttribute="leadingMargin" id="G5F-CM-qCJ"/>
+                                        <constraint firstItem="D2H-8k-mz7" firstAttribute="bottom" secondItem="bWo-WB-akl" secondAttribute="bottomMargin" id="wlt-ns-U7X"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="authorNameLabel" destination="D2H-8k-mz7" id="JRz-6O-jel"/>
@@ -1039,7 +1083,7 @@
         <!--Conference Details-->
         <scene sceneID="cpv-PI-zXi">
             <objects>
-                <viewController id="SXT-W0-WwH" sceneMemberID="viewController">
+                <viewController id="SXT-W0-WwH" customClass="ConferenceDetailViewController" customModule="CoBra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AJ3-th-kai">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1188,4 +1232,7 @@
             <point key="canvasLocation" x="2652" y="2615"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="LaunchScreen" width="377" height="669"/>
+    </resources>
 </document>

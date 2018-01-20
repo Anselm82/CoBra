@@ -13,12 +13,32 @@ class IdeaAddViewController: UIViewController {
 
     var idea : Idea?
     var authors = [Author]()
+    var conference : Conference?
     
     @IBOutlet weak var ideaDescriptionTextView: UITextView!
     
+    @IBOutlet weak var conferenceButton: UIBorderButton!
     @IBOutlet weak var authorsButton: UIButton!
+    @IBOutlet weak var ideaTitleTextField: UITextField!
     
     @IBAction func cancel(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    var previous : IdeaTableViewController?
+    
+    @IBAction func save(_ sender: Any) {
+        guard authors.count > 0, conference != nil, idea != nil, ideaDescriptionTextView.text.count > 0, ideaTitleTextField.text?.count ?? 0 > 0, ideaDescriptionTextView.text != "Describe your idea here..." else {
+            return
+        }
+        let authorSet = NSSet()
+        authorSet.addingObjects(from: authors)
+        idea?.title = ideaTitleTextField.text
+        idea?.addToAuthors(authorSet)
+        idea?.idea_description = ideaDescriptionTextView.text
+        idea?.conference = conference
+        try? context.save()
+        previous?.tableView.reloadData()
         dismiss(animated: true, completion: nil)
     }
     
@@ -34,8 +54,8 @@ class IdeaAddViewController: UIViewController {
         super.viewDidLoad()
         //navigationItem.leftItemsSupplementBackButton = true
         //navigationItem.leftBarButtonItem = cancelButton
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         idea = (NSEntityDescription.insertNewObject(forEntityName: "Idea", into: context) as! Idea)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         ideaDescriptionTextView.text = "Describe your idea here..."
@@ -50,7 +70,7 @@ class IdeaAddViewController: UIViewController {
         view.endEditing(true)
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
+    /*@objc func keyboardWillShow(notification: NSNotification) {
         ideaDescriptionTextView.translatesAutoresizingMaskIntoConstraints = true
         ideaDescriptionTextView.sizeToFit()
     }
@@ -58,7 +78,7 @@ class IdeaAddViewController: UIViewController {
     @objc func keyboardWillHide(notification: NSNotification) {
         ideaDescriptionTextView.translatesAutoresizingMaskIntoConstraints = true
         ideaDescriptionTextView.sizeToFit()
-    }
+    }*/
     
     override func viewWillAppear(_ animated: Bool) {
         var text = "Authors"
@@ -72,6 +92,11 @@ class IdeaAddViewController: UIViewController {
             text += " et al."
         }
         authorsButton.setTitle(text, for: .normal)
+        var ctext = "Conference"
+        if conference != nil {
+            ctext = conference!.acronym!
+        }
+        conferenceButton.setTitle(ctext, for: .normal)
     }
     
     // MARK: - Navigation
@@ -82,6 +107,10 @@ class IdeaAddViewController: UIViewController {
             let navigationController = segue.destination as! UINavigationController
             let ideaAuthorTableViewController = navigationController.viewControllers.first as! IdeaAuthorTableViewController
             ideaAuthorTableViewController.previous = self
+        } else if segue.identifier == "selectConference" {
+            let navigationController = segue.destination as! UINavigationController
+            let ideaConferenceTableViewController = navigationController.viewControllers.first as! IdeaConferenceTableViewController
+            ideaConferenceTableViewController.previous = self
         }
     }
 }
