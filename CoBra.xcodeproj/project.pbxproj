@@ -46,7 +46,6 @@
 		434D65382010B8C400AD373C /* IdeaAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaAddViewController.swift; sourceTree = "<group>"; };
 		434D653A2010E94D00AD373C /* IdeaAuthorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaAuthorTableViewController.swift; sourceTree = "<group>"; };
 		434D653C2010E96E00AD373C /* IdeaConferenceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaConferenceTableViewController.swift; sourceTree = "<group>"; };
-		4389A93A200FABA60045C94E /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		4389A93C200FB0000045C94E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		43A657EE200F6DDB008B9F38 /* AuthorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorTableViewCell.swift; sourceTree = "<group>"; };
 		43A657F2200F7805008B9F38 /* ConferenceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceTableViewCell.swift; sourceTree = "<group>"; };
@@ -107,7 +106,6 @@
 				43A657F1200F77F5008B9F38 /* Idea */,
 				43A657F0200F77EE008B9F38 /* Conference */,
 				43206BD0200CDFD9005FAFBE /* DetailViewController.swift */,
-				4389A93A200FABA60045C94E /* MasterViewController.swift */,
 				43D8465A200CDAFC007BD746 /* CoBra.storyboard */,
 				434BD42C200CCA14009A0AC7 /* Assets.xcassets */,
 				434BD42E200CCA14009A0AC7 /* LaunchScreen.storyboard */,

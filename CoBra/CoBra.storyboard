@@ -507,26 +507,19 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authors:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YwQ-2K-0xh">
-                                <rect key="frame" x="20" y="420" width="335" height="21"/>
+                                <rect key="frame" x="20" y="425" width="335" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conference:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bix-EK-bC0">
-                                <rect key="frame" x="20" y="374.5" width="94" height="21"/>
+                                <rect key="frame" x="20" y="358" width="94" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOM-da-e5c">
-                                <rect key="frame" x="134" y="370" width="221" height="30"/>
-                                <state key="normal" title="Conference name"/>
-                                <connections>
-                                    <segue destination="7Fd-Xq-1je" kind="showDetail" identifier="showConferenceDetail" id="f9G-g9-QQo"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZKJ-Wt-E9V">
-                                <rect key="frame" x="20" y="457" width="335" height="146"/>
+                                <rect key="frame" x="20" y="462" width="335" height="141"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="IdeaAuthorCell" id="0Du-Bq-vxe" customClass="AuthorTableViewCell" customModule="CoBra" customModuleProvider="target">
@@ -554,11 +547,21 @@
                                     <outlet property="dataSource" destination="CzK-pI-rOn" id="dwj-fK-emj"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOM-da-e5c">
+                                <rect key="frame" x="20" y="386.5" width="335" height="30"/>
+                                <state key="normal" title="Conference name"/>
+                                <connections>
+                                    <segue destination="7Fd-Xq-1je" kind="popoverPresentation" identifier="showConferenceDetail" popoverAnchorView="dOM-da-e5c" id="f9G-g9-QQo">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ZKJ-Wt-E9V" firstAttribute="leading" secondItem="CQj-xa-e33" secondAttribute="leading" constant="20" id="2Sr-b6-vCQ"/>
                             <constraint firstItem="W2I-Ib-tQ2" firstAttribute="leading" secondItem="CQj-xa-e33" secondAttribute="leading" constant="20" id="3Nj-rt-pzd"/>
+                            <constraint firstItem="dOM-da-e5c" firstAttribute="leading" secondItem="CQj-xa-e33" secondAttribute="leading" constant="20" id="5mt-nP-LHH"/>
                             <constraint firstItem="W3y-WI-BJ6" firstAttribute="top" secondItem="W2I-Ib-tQ2" secondAttribute="bottom" constant="16" id="5qb-p7-8R4"/>
                             <constraint firstItem="ZKJ-Wt-E9V" firstAttribute="top" secondItem="YwQ-2K-0xh" secondAttribute="bottom" constant="16" id="660-Y4-StL"/>
                             <constraint firstItem="W3y-WI-BJ6" firstAttribute="leading" secondItem="CQj-xa-e33" secondAttribute="leading" constant="20" id="6HW-8N-OtH"/>
@@ -566,21 +569,20 @@
                             <constraint firstItem="CQj-xa-e33" firstAttribute="trailing" secondItem="W2I-Ib-tQ2" secondAttribute="trailing" constant="20" id="C1j-W5-VDC"/>
                             <constraint firstItem="CQj-xa-e33" firstAttribute="trailing" secondItem="W3y-WI-BJ6" secondAttribute="trailing" constant="20" id="Deq-s0-nJ2"/>
                             <constraint firstItem="CQj-xa-e33" firstAttribute="trailing" secondItem="Zpr-Vd-dfK" secondAttribute="trailing" constant="20" id="EfI-hQ-Ped"/>
-                            <constraint firstItem="dOM-da-e5c" firstAttribute="centerY" secondItem="bix-EK-bC0" secondAttribute="centerY" id="Nn9-bb-4oP"/>
                             <constraint firstItem="DUk-Rh-UDC" firstAttribute="leading" secondItem="CQj-xa-e33" secondAttribute="leading" constant="20" id="P35-A8-cOh"/>
                             <constraint firstItem="CQj-xa-e33" firstAttribute="trailing" secondItem="ZKJ-Wt-E9V" secondAttribute="trailing" constant="20" id="QG0-8H-Pmz"/>
-                            <constraint firstItem="dOM-da-e5c" firstAttribute="leading" secondItem="bix-EK-bC0" secondAttribute="trailing" constant="20" id="SZ6-mf-D5s"/>
                             <constraint firstItem="CQj-xa-e33" firstAttribute="trailing" secondItem="YwQ-2K-0xh" secondAttribute="trailing" constant="20" id="Ucv-lB-Uf8"/>
                             <constraint firstItem="CQj-xa-e33" firstAttribute="bottom" secondItem="ZKJ-Wt-E9V" secondAttribute="bottom" constant="20" id="Xdn-77-hGM"/>
-                            <constraint firstItem="CQj-xa-e33" firstAttribute="trailing" secondItem="dOM-da-e5c" secondAttribute="trailing" constant="20" id="aAb-Lt-qsl"/>
+                            <constraint firstItem="dOM-da-e5c" firstAttribute="top" secondItem="bix-EK-bC0" secondAttribute="bottom" constant="8" id="aGJ-O6-Zs5"/>
+                            <constraint firstItem="bix-EK-bC0" firstAttribute="top" secondItem="W3y-WI-BJ6" secondAttribute="bottom" constant="8" id="aIk-HD-bOj"/>
                             <constraint firstItem="DUk-Rh-UDC" firstAttribute="top" secondItem="CQj-xa-e33" secondAttribute="top" constant="20" id="awQ-Nk-KmN"/>
                             <constraint firstItem="YwQ-2K-0xh" firstAttribute="leading" secondItem="CQj-xa-e33" secondAttribute="leading" constant="20" id="cnB-Lj-78v"/>
+                            <constraint firstItem="bix-EK-bC0" firstAttribute="leading" secondItem="CQj-xa-e33" secondAttribute="leading" constant="20" id="d9w-43-qmX"/>
+                            <constraint firstItem="YwQ-2K-0xh" firstAttribute="top" secondItem="dOM-da-e5c" secondAttribute="bottom" constant="8" id="dIt-Me-PLz"/>
                             <constraint firstItem="CQj-xa-e33" firstAttribute="trailing" secondItem="DUk-Rh-UDC" secondAttribute="trailing" constant="20" id="g3w-qb-4vJ"/>
+                            <constraint firstItem="CQj-xa-e33" firstAttribute="trailing" secondItem="dOM-da-e5c" secondAttribute="trailing" constant="20" id="mXZ-9K-SL1"/>
                             <constraint firstItem="W2I-Ib-tQ2" firstAttribute="top" secondItem="Zpr-Vd-dfK" secondAttribute="bottom" constant="25" id="naJ-Gz-Qsh"/>
                             <constraint firstItem="Zpr-Vd-dfK" firstAttribute="top" secondItem="DUk-Rh-UDC" secondAttribute="bottom" constant="16" id="o09-6u-dK8"/>
-                            <constraint firstItem="YwQ-2K-0xh" firstAttribute="top" secondItem="dOM-da-e5c" secondAttribute="bottom" constant="20" id="pDl-HQ-sbd"/>
-                            <constraint firstItem="dOM-da-e5c" firstAttribute="top" secondItem="W3y-WI-BJ6" secondAttribute="bottom" constant="20" id="pnE-Ee-p89"/>
-                            <constraint firstItem="bix-EK-bC0" firstAttribute="leading" secondItem="CQj-xa-e33" secondAttribute="leading" constant="20" id="vyN-XZ-Vgy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CQj-xa-e33"/>
                     </view>
@@ -588,7 +590,11 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="7XQ-NX-swN"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Idea Details" id="zBp-eo-Esc">
-                        <barButtonItem key="rightBarButtonItem" title="Export" id="ez8-Rt-Spp"/>
+                        <barButtonItem key="rightBarButtonItem" title="Export" id="ez8-Rt-Spp">
+                            <connections>
+                                <action selector="export:" destination="ve5-jr-Gs3" id="m3g-FW-vYV"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -600,7 +606,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TCY-HR-mWl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="809" y="2615"/>
+            <point key="canvasLocation" x="808.79999999999995" y="2614.5427286356826"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jXP-e3-hbx">
@@ -1226,7 +1232,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Conference Details" id="ffX-0r-8eI">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="bhC-Fo-FMr"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="bhC-Fo-FMr">
+                            <connections>
+                                <action selector="close:" destination="SXT-W0-WwH" id="WRP-ph-8rA"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>

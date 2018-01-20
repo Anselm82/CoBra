@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EventKit
 
 class IdeaDetailViewController: UIViewController {
     
@@ -16,6 +17,36 @@ class IdeaDetailViewController: UIViewController {
     @IBOutlet weak var conferenceNameButton: UIButton!
     @IBOutlet weak var authorsTableView: UITableView!
     
+    @IBAction func export(_ sender: Any) {
+        let eventStore : EKEventStore = EKEventStore()
+        
+        eventStore.requestAccess(to: .event) { (granted, error) in
+            
+            if (granted) && (error == nil) {
+                let event:EKEvent = EKEvent(eventStore: eventStore)
+                event.title = self.idea?.title
+                event.startDate = self.idea?.conference?.abstract_deadline
+                event.endDate = self.idea?.conference?.abstract_deadline
+                event.notes = self.idea?.idea_description
+                event.calendar = eventStore.defaultCalendarForNewEvents
+                let article:EKEvent = EKEvent(eventStore: eventStore)
+                article.title = self.idea?.title
+                article.startDate = self.idea?.conference?.article_deadline
+                article.endDate = self.idea?.conference?.article_deadline
+                article.notes = self.idea?.idea_description
+                article.calendar = eventStore.defaultCalendarForNewEvents
+                do {
+                    try eventStore.save(event, span: .thisEvent)
+                    try eventStore.save(article, span: .thisEvent)
+                } catch let error as NSError {
+                    print("failed to save event with error : \(error)")
+                }
+                print("Saved Events")
+            } else{
+                print("failed to save event with error : \(String(describing: error)) or access not granted")
+            }
+        }
+    }
     
     var idea : Idea?
     
