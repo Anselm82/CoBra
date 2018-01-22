@@ -37,6 +37,7 @@
 		432C763B200E8E03004146CD /* AuthorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorTableViewController.swift; sourceTree = "<group>"; };
 		432C763D200E8E3F004146CD /* AuthorAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorAddViewController.swift; sourceTree = "<group>"; };
 		432C763F200E8E64004146CD /* AuthorDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorDetailViewController.swift; sourceTree = "<group>"; };
+		4339D3752016450500CAC54F /* conferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = conferences.plist; sourceTree = "<group>"; };
 		434BD41D200CCA14009A0AC7 /* CoBra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoBra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		434BD420200CCA14009A0AC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		434BD423200CCA14009A0AC7 /* CoBra.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoBra.xcdatamodel; sourceTree = "<group>"; };
@@ -102,14 +103,15 @@
 				4389A93C200FB0000045C94E /* Constants.swift */,
 				434BD420200CCA14009A0AC7 /* AppDelegate.swift */,
 				43206BD2200CDFFC005FAFBE /* MainViewController.swift */,
+				43206BD0200CDFD9005FAFBE /* DetailViewController.swift */,
 				432C7641200E8E6A004146CD /* Author */,
 				43A657F1200F77F5008B9F38 /* Idea */,
 				43A657F0200F77EE008B9F38 /* Conference */,
-				43206BD0200CDFD9005FAFBE /* DetailViewController.swift */,
 				43D8465A200CDAFC007BD746 /* CoBra.storyboard */,
 				434BD42C200CCA14009A0AC7 /* Assets.xcassets */,
 				434BD42E200CCA14009A0AC7 /* LaunchScreen.storyboard */,
 				434BD431200CCA14009A0AC7 /* Info.plist */,
+				4339D3752016450500CAC54F /* conferences.plist */,
 				434BD422200CCA14009A0AC7 /* CoBra.xcdatamodeld */,
 				43EC251920115CC900ECC094 /* UIBorderButton.swift */,
 			);

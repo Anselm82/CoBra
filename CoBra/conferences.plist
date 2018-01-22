@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>website</key>
+		<string>http://sigir.org/sigir2018/</string>
+		<key>ranking</key>
+		<string>A++</string>
+		<key>location</key>
+		<string>Ann Arbor, Michigan, USA</string>
+		<key>article_deadline</key>
+		<date>2018-01-29T22:59:59Z</date>
+		<key>abstract_deadline</key>
+		<date>2018-01-22T22:59:59Z</date>
+		<key>acronym</key>
+		<string>SIGIR 2018</string>
+		<key>name</key>
+		<string>International Conference on Research and Development in Information Retrieval 2018</string>
+	</dict>
+	<dict>
+		<key>website</key>
+		<string>http://www.re18.org</string>
+		<key>ranking</key>
+		<string>A</string>
+		<key>location</key>
+		<string>Banff, Alberta, Canada</string>
+		<key>article_deadline</key>
+		<date>2018-02-28T22:59:59Z</date>
+		<key>abstract_deadline</key>
+		<date>2018-02-16T22:59:59Z</date>
+		<key>acronym</key>
+		<string>RE 2018</string>
+		<key>name</key>
+		<string>Requirements Engineering 2018</string>
+	</dict>
+	<dict>
+		<key>website</key>
+		<string>https://conf.researchr.org/home/icse-2019</string>
+		<key>ranking</key>
+		<string>A++</string>
+		<key>location</key>
+		<string>Montréal, Canada</string>
+		<key>article_deadline</key>
+		<date>2018-08-24T21:59:59Z</date>
+		<key>abstract_deadline</key>
+		<date>2017-08-17T21:59:59Z</date>
+		<key>acronym</key>
+		<string>ICSE 2019</string>
+		<key>name</key>
+		<string>International Conference on Software Engineering 2019</string>
+	</dict>
+	<dict>
+		<key>website</key>
+		<string>http://www.modelsconference.org</string>
+		<key>ranking</key>
+		<string>B</string>
+		<key>location</key>
+		<string>Copenhagen, Denmark</string>
+		<key>article_deadline</key>
+		<date>2018-05-04T21:59:59Z</date>
+		<key>abstract_deadline</key>
+		<date>2018-04-27T21:59:59Z</date>
+		<key>acronym</key>
+		<string>MODELS 2018</string>
+		<key>name</key>
+		<string>International Conference on Model Driven Engineering Languages and Systems 2018</string>
+	</dict>
+	<dict>
+		<key>website</key>
+		<string>http://www.ase2018.com</string>
+		<key>ranking</key>
+		<string>A</string>
+		<key>location</key>
+		<string>Montpellier, France</string>
+		<key>article_deadline</key>
+		<date>2018-04-26T21:59:59Z</date>
+		<key>abstract_deadline</key>
+		<date>2018-04-19T21:59:59Z</date>
+		<key>acronym</key>
+		<string>ASE 2018</string>
+		<key>name</key>
+		<string>International Conference on Automated Software Engineering 2018</string>
+	</dict>
+	<dict>
+		<key>website</key>
+		<string>https://icsme2018.github.io</string>
+		<key>ranking</key>
+		<string>A</string>
+		<key>location</key>
+		<string>Madrid, Spain</string>
+		<key>article_deadline</key>
+		<date>2018-04-06T21:59:59Z</date>
+		<key>abstract_deadline</key>
+		<date>2018-03-30T21:59:59Z</date>
+		<key>acronym</key>
+		<string>ICSME 2018</string>
+		<key>name</key>
+		<string>International Conference on Software Maintenance and Evolution 2018</string>
+	</dict>
+	<dict>
+		<key>website</key>
+		<string>https://caise2018.ut.ee</string>
+		<key>ranking</key>
+		<string>A</string>
+		<key>location</key>
+		<string>Tallinn, Estonia</string>
+		<key>article_deadline</key>
+		<date>2018-12-01T22:59:59Z</date>
+		<key>abstract_deadline</key>
+		<date>2017-11-24T22:59:59Z</date>
+		<key>acronym</key>
+		<string>CAiSE 2018</string>
+		<key>name</key>
+		<string>International Conference on Advanced Information Systems Engineering 2018</string>
+	</dict>
+	<dict>
+		<key>website</key>
+		<string>http://www.nwpu-bioinformatics.com/ER2018/</string>
+		<key>ranking</key>
+		<string>A</string>
+		<key>location</key>
+		<string>Xi&apos;an, China</string>
+		<key>article_deadline</key>
+		<date>2018-03-30T21:59:59Z</date>
+		<key>abstract_deadline</key>
+		<date>2018-03-23T22:59:59Z</date>
+		<key>acronym</key>
+		<string>ER 2018</string>
+		<key>name</key>
+		<string>International Conference on Conceptual Modeling 2018</string>
+	</dict>
+</array>
+</plist>
