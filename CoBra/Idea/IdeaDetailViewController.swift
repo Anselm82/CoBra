@@ -52,7 +52,7 @@ class IdeaDetailViewController: UIViewController {
         authorsTableView.dataSource = self
         ideaTitleLabel.text = idea!.title
         ideaDescriptionTextView.text = idea!.idea_description
-        conferenceNameButton.setTitle(idea!.conference?.name ?? "No conference", for: .normal)
+        conferenceNameButton.setTitle(idea!.conference?.acronym ?? "No conference", for: .normal)
     }
     
     // MARK: - Navigation

@@ -10,5 +10,12 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    override func viewDidLoad() {
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+    }
 }
 
