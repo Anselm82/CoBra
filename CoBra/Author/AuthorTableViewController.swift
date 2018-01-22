@@ -11,6 +11,7 @@ import CoreData
 
 class AuthorTableViewController: UITableViewController {
     
+    // Outlet
     @IBOutlet weak var addButtonItem: UIBarButtonItem!
     
     lazy var context : NSManagedObjectContext = {
@@ -31,6 +32,7 @@ class AuthorTableViewController: UITableViewController {
         return _frc
     }()
     
+    // Prepare view
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItems = [self.addButtonItem, self.editButtonItem]
@@ -49,6 +51,7 @@ class AuthorTableViewController: UITableViewController {
         return 0
     }
     
+    // Configure the cell for author
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var author : Author
         author = frc.object(at: indexPath)
@@ -81,7 +84,7 @@ class AuthorTableViewController: UITableViewController {
     }
 }
 
-    // MARK: - AuthorTableViewController+NSFetchedResultsControllerDelegate
+// MARK: - NSFetchedResultsControllerDelegate
 
 extension AuthorTableViewController : NSFetchedResultsControllerDelegate {
     
@@ -110,10 +113,8 @@ extension AuthorTableViewController : NSFetchedResultsControllerDelegate {
             tableView.deleteRows(at: [indexPath!], with: .fade)
         case .insert:
             tableView.insertRows(at: [newIndexPath!], with: .fade)
-        case .move:
-            tableView.moveRow(at: indexPath!, to: newIndexPath!)
-        case .update:
-            tableView.reloadRows(at: [indexPath!], with: .fade)
+        default:
+            break
         }
     }
     

@@ -11,45 +11,39 @@ import EventKit
 
 class IdeaDetailViewController: UIViewController {
     
+    var idea : Idea?
     
+    // Outlets
     @IBOutlet weak var ideaTitleLabel: UILabel!
     @IBOutlet weak var ideaDescriptionTextView: UITextView!
     @IBOutlet weak var conferenceNameButton: UIButton!
     @IBOutlet weak var authorsTableView: UITableView!
     
+    // Export events to iCal, needs info.plist declaration
     @IBAction func export(_ sender: Any) {
         let eventStore : EKEventStore = EKEventStore()
         
         eventStore.requestAccess(to: .event) { (granted, error) in
-            
+            // If permission granted and no errors
             if (granted) && (error == nil) {
+                // Create one event that will be registered twice (abstract and article deadlines)
                 let event:EKEvent = EKEvent(eventStore: eventStore)
                 event.title = self.idea?.title
                 event.startDate = self.idea?.conference?.abstract_deadline
                 event.endDate = self.idea?.conference?.abstract_deadline
                 event.notes = self.idea?.idea_description
                 event.calendar = eventStore.defaultCalendarForNewEvents
-                let article:EKEvent = EKEvent(eventStore: eventStore)
-                article.title = self.idea?.title
-                article.startDate = self.idea?.conference?.article_deadline
-                article.endDate = self.idea?.conference?.article_deadline
-                article.notes = self.idea?.idea_description
-                article.calendar = eventStore.defaultCalendarForNewEvents
-                do {
-                    try eventStore.save(event, span: .thisEvent)
-                    try eventStore.save(article, span: .thisEvent)
-                } catch let error as NSError {
-                    print("failed to save event with error : \(error)")
-                }
-                print("Saved Events")
+                try? eventStore.save(event, span: .thisEvent)
+                event.startDate = self.idea?.conference?.article_deadline
+                event.endDate = self.idea?.conference?.article_deadline
+                try? eventStore.save(event, span: .thisEvent)
             } else{
                 print("failed to save event with error : \(String(describing: error)) or access not granted")
             }
         }
     }
     
-    var idea : Idea?
-    
+    // Prepare view
     override func viewDidLoad() {
         super.viewDidLoad()
         guard idea != nil else {
@@ -69,6 +63,15 @@ class IdeaDetailViewController: UIViewController {
             let navigationController = segue.destination as! UINavigationController
             let conferenceDetailViewController = navigationController.viewControllers.first as! ConferenceDetailViewController
             conferenceDetailViewController.conference = idea?.conference
+        } else if segue.identifier == "showAuthorDetail" {
+            var author: Author
+            // Load author from cell, CoreData is not needed
+            if (authorsTableView.indexPathForSelectedRow?.row) != nil {
+                author = (authorsTableView.cellForRow(at: authorsTableView.indexPathForSelectedRow!) as! AuthorTableViewCell).author!
+                let navigationViewController = segue.destination as! UINavigationController
+                let detailViewController = navigationViewController.viewControllers.first as! AuthorDetailViewController
+                detailViewController.author = author
+            }
         }
     }
 }
@@ -77,6 +80,7 @@ class IdeaDetailViewController: UIViewController {
 
 extension IdeaDetailViewController : UITableViewDataSource {
     
+    // Fixed number
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -88,6 +92,7 @@ extension IdeaDetailViewController : UITableViewDataSource {
         return 0
     }
     
+    // Prepare cell for author
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var author : Author
         author = idea?.authors?.allObjects[indexPath.row] as! Author

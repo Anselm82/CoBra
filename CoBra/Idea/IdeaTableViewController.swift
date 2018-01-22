@@ -10,7 +10,18 @@ import UIKit
 import CoreData
 
 class IdeaTableViewController: UITableViewController {
-
+    
+    // Outlets
+    @IBOutlet weak var addButtonItem: UIBarButtonItem!
+    
+    var idea: Idea?
+    
+    // Prepare view
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.rightBarButtonItems = [self.addButtonItem, self.editButtonItem]
+    }
+    
     lazy var context : NSManagedObjectContext = {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let persistenContainer = appDelegate.persistentContainer
@@ -29,15 +40,6 @@ class IdeaTableViewController: UITableViewController {
         return _frc
     }()
     
-    @IBOutlet weak var addButtonItem: UIBarButtonItem!
-    
-    var idea: Idea?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.navigationItem.rightBarButtonItems = [self.addButtonItem, self.editButtonItem]
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -51,6 +53,7 @@ class IdeaTableViewController: UITableViewController {
         return 0
     }
 
+    // Prepare cell for idea
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var idea : Idea
         idea = frc.object(at: indexPath)

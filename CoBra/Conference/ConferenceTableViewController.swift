@@ -22,30 +22,20 @@ class ConferenceTableViewController: UITableViewController {
     }()
     
     lazy var frc : NSFetchedResultsController<Conference> = {
-        
         let req = NSFetchRequest<Conference>(entityName:"Conference")
         req.sortDescriptors = [ NSSortDescriptor(key:"acronym", ascending:true)]
-        
-        
         let _frc = NSFetchedResultsController(fetchRequest: req,
                                               managedObjectContext: context,
                                               sectionNameKeyPath: nil,
                                               cacheName: nil)
-        
-        _frc.delegate = self as? NSFetchedResultsControllerDelegate
-        
+        _frc.delegate = self as NSFetchedResultsControllerDelegate
         try? _frc.performFetch()
-        
         return _frc
-        
     }()
     
-    //var backgroundTask : UIBackgroundTaskIdentifier = 0
-    
+    // Prepare view
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
         let searchController = UISearchController(searchResultsController: nil)
         searchController.delegate = self
         navigationItem.searchController = searchController
@@ -58,23 +48,17 @@ class ConferenceTableViewController: UITableViewController {
         
         self.downloadConferencesList(nil)
         
-        
-        
         weak var weakSelf = self
         
         NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationDidBecomeActive,
                                                object: nil,
                                                queue: .main) { (notification) in
-                                                
                                                 weakSelf?.downloadConferencesList(nil)
         }
         
         NotificationCenter.default.addObserver(forName: .UIApplicationWillTerminate ,
                                                object: nil,
                                                queue: .main) { (notification) in
-                                                
-                                                
-                                                
         }
         
         tableView.refreshControl = UIRefreshControl()
@@ -101,7 +85,6 @@ class ConferenceTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         if navigationItem.searchController!.isActive ,
             !textIsEmpty(navigationItem.searchController!.searchBar.text)  {
             return filteredConferences!.count
@@ -130,10 +113,9 @@ class ConferenceTableViewController: UITableViewController {
         
         return cell
     }
-      
+    
     
     // MARK: - Navigation
-    
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         
@@ -147,33 +129,23 @@ class ConferenceTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showConferenceDetail" {
-            
             var conference: Conference
-            
             if let row = tableView.indexPathForSelectedRow?.row {
-                
                 if navigationItem.searchController!.isActive,
                     navigationItem.searchController!.searchBar.text?.count ?? 0 > 0 {
                     conference = filteredConferences![row]
                 } else {
                     conference = frc.object(at: IndexPath(row:row, section:0))
                 }
-                
                 let nav = segue.destination as! UINavigationController
-                
                 let nextVC = nav.viewControllers.first as! ConferenceDetailViewController
-                
                 nextVC.conference = conference
-                
             }
         }
     }
-    
-    @IBAction func backToMenu(_ segue:UIStoryboardSegue) {
-        
-    }
 }
 
+// MARK: - NSFetchedResultsControllerDelegate
 extension ConferenceTableViewController : NSFetchedResultsControllerDelegate {
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -209,6 +181,7 @@ extension ConferenceTableViewController : NSFetchedResultsControllerDelegate {
     
 }
 
+// MARK: - Download file
 extension ConferenceTableViewController {
     
     @objc func downloadConferencesList(_ control :UIRefreshControl?) {
@@ -227,8 +200,8 @@ extension ConferenceTableViewController {
             }
             DispatchQueue.main.async {
                 if let conferences = try? (PropertyListSerialization.propertyList(from: data!,
-                                                                                options: .mutableContainers,
-                                                                                format: nil) as! [[String:Any]]) {
+                                                                                  options: .mutableContainers,
+                                                                                  format: nil) as! [[String:Any]]) {
                     weakSelf?.saveConferences(conferences)
                 }
                 control?.endRefreshing()
@@ -237,6 +210,7 @@ extension ConferenceTableViewController {
         task.resume()
     }
     
+    // Make persistent
     func saveConferences(_ conferences: [[String:Any]]) {
         let sortConferences = conferences.sorted { (objA, objB) -> Bool in
             if let firstAcronym = objA["acronym"] as? String,
@@ -256,14 +230,12 @@ extension ConferenceTableViewController {
         
         while indexNew < sortConferences.count &&
             indexOld < (results?.count ?? 0) {
-                
                 let newObj = sortConferences[indexNew]
                 let oldObj = results![indexOld]
                 
                 if let newAcronym = newObj["acronym"] as? String , let oldAcronym = oldObj.acronym {
                     
                     if newAcronym == oldAcronym {
-                        
                         oldObj.abstract_deadline = newObj["abstract_deadline"] as? Date
                         oldObj.article_deadline = newObj["article_deadline"] as? Date
                         oldObj.name = newObj["name"] as? String
@@ -271,15 +243,12 @@ extension ConferenceTableViewController {
                         oldObj.location = newObj["location"] as? String
                         oldObj.ranking = newObj["ranking"] as? String
                         oldObj.website = newObj["website"] as? String
-
                         
                         indexNew += 1
                         indexOld += 1
-                        
                     } else if newAcronym < oldAcronym {
                         let conference = NSEntityDescription.insertNewObject(forEntityName: "Conference",
-                                                                          into: context) as! Conference
-                        
+                                                                             into: context) as! Conference
                         conference.abstract_deadline = newObj["abstract_deadline"] as? Date
                         conference.article_deadline = newObj["article_deadline"] as? Date
                         conference.name = newObj["name"] as? String
@@ -291,10 +260,8 @@ extension ConferenceTableViewController {
                         indexNew += 1
                         
                     } else {
-                        
                         context.delete(oldObj)
                         indexOld += 1
-                        
                     }
                 }
         }
@@ -302,7 +269,7 @@ extension ConferenceTableViewController {
         while indexNew < sortConferences.count {
             let newObj = sortConferences[indexNew]
             let conference = NSEntityDescription.insertNewObject(forEntityName: "Conference",
-                                                              into: context) as! Conference
+                                                                 into: context) as! Conference
             conference.abstract_deadline = newObj["abstract_deadline"] as? Date
             conference.article_deadline = newObj["article_deadline"] as? Date
             conference.name = newObj["name"] as? String
@@ -323,6 +290,7 @@ extension ConferenceTableViewController {
     }
 }
 
+// MARK: - Handle searching
 extension ConferenceTableViewController : UISearchControllerDelegate, UISearchResultsUpdating {
     
     func textIsEmpty( _ text: String?) -> Bool {

@@ -11,12 +11,29 @@ import CoreData
 
 class IdeaAddViewController: UIViewController {
 
+    // Model
     var idea : Idea?
-    var authors = [Author]()
     var conference : Conference?
+    lazy var authors : [Author] = {
+        return [Author]()
+    }()
     
+    lazy var context : NSManagedObjectContext = {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let persistenContainer = appDelegate.persistentContainer
+        return persistenContainer.viewContext
+    }()
+    
+    var previous : IdeaTableViewController?
+    
+    // Frame for TextView Placeholder behaviour
+    var frame : CGRect?
+    // Bottom constraint initial value for keyboard animations
+    var originalBottomSpace : CGFloat = 0.0
+    
+    // Outlets
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var ideaDescriptionTextView: UITextView!
-    
     @IBOutlet weak var conferenceButton: UIBorderButton!
     @IBOutlet weak var authorsButton: UIButton!
     @IBOutlet weak var ideaTitleTextField: UITextField!
@@ -25,35 +42,35 @@ class IdeaAddViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    var previous : IdeaTableViewController?
-    
+    // Make persistent
     @IBAction func save(_ sender: Any) {
-        guard authors.count > 0, conference != nil, idea != nil, ideaDescriptionTextView.text.count > 0, ideaTitleTextField.text?.count ?? 0 > 0, ideaDescriptionTextView.text != "Describe your idea here..." else {
+        // Values are set
+        guard authors.count > 0, conference != nil, ideaDescriptionTextView.text.count > 0, ideaTitleTextField.text?.count ?? 0 > 0, ideaDescriptionTextView.text != "Describe your idea here..." else {
+            let alert = UIAlertController(title: "Create idea", message: "Please, complete all the fields.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+            self.present(alert, animated: false, completion: nil)            
             return
         }
+        // Create entity, binding and perform persistence action
+        idea = (NSEntityDescription.insertNewObject(forEntityName: "Idea", into: context) as! Idea)
         idea?.title = ideaTitleTextField.text
         idea?.idea_description = ideaDescriptionTextView.text
         idea?.conference = conference
+        for author in authors {
+            idea?.addToAuthors(author)
+        }
         try? context.save()
+        // Reload table data
         previous?.tableView.reloadData()
         dismiss(animated: true, completion: nil)
     }
     
-    lazy var context : NSManagedObjectContext = {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let persistenContainer = appDelegate.persistentContainer
-        return persistenContainer.viewContext
-    }()
-    
-    var frame : CGRect?
-    
+    // Prepare view
     override func viewDidLoad() {
         super.viewDidLoad()
-        //navigationItem.leftItemsSupplementBackButton = true
-        //navigationItem.leftBarButtonItem = cancelButton
-        //NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        //NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        idea = (NSEntityDescription.insertNewObject(forEntityName: "Idea", into: context) as! Idea)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardAnimation(_:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardAnimation(_:)), name: .UIKeyboardWillHide, object: nil)
+        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         ideaDescriptionTextView.text = "Describe your idea here..."
         ideaDescriptionTextView.textColor = UIColor.lightGray
@@ -61,32 +78,45 @@ class IdeaAddViewController: UIViewController {
         frame = ideaDescriptionTextView.frame
         ideaDescriptionTextView.isScrollEnabled = false
         view.addGestureRecognizer(tap)
+        ideaTitleTextField.becomeFirstResponder()
     }
     
+    // On touch outside dismiss keyboard
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     
-    /*@objc func keyboardWillShow(notification: NSNotification) {
-        ideaDescriptionTextView.translatesAutoresizingMaskIntoConstraints = true
-        ideaDescriptionTextView.sizeToFit()
+    // Modify constraint on keyboard animation
+    @objc func keyboardAnimation(_ notification: Notification) {
+        let userInfo = notification.userInfo!
+        let animationDuration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+        let keyboardEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! CGRect)
+        let convertedKeyboardEndFrame = view.convert(keyboardEndFrame, from: view.window)
+        let curve = userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber
+        let animationCurve = UIViewAnimationOptions(rawValue:curve.uintValue << 16)
+        let height = view.bounds.size.height - convertedKeyboardEndFrame.origin.y
+        bottomConstraint.constant = originalBottomSpace + height
+        UIView.animate(withDuration: animationDuration,
+                       delay: 0.0,
+                       options: [.beginFromCurrentState, animationCurve],
+                       animations: {
+                        self.view.layoutIfNeeded()
+        }, completion: nil)
     }
     
-    @objc func keyboardWillHide(notification: NSNotification) {
-        ideaDescriptionTextView.translatesAutoresizingMaskIntoConstraints = true
-        ideaDescriptionTextView.sizeToFit()
-    }*/
-    
+    // Configure buttons text after selection
     override func viewWillAppear(_ animated: Bool) {
         var text = "Authors"
-        if authors.count >= 1 {
-            text = "\(authors.first!.surname ?? ""), \(authors.first!.name ?? "")"
-        }
-        if authors.count == 2 {
-            text += " & \(authors.last!.surname ?? ""), \(authors.last!.name ?? "")"
-        }
-        if authors.count > 2 {
-            text += " et al."
+        if authors.count > 0 {
+            if authors.count >= 1 {
+                text = "\(authors.first!.surname ?? ""), \(authors.first!.name ?? "")"
+            }
+            if authors.count == 2 {
+                text += " & \(authors.last!.surname ?? ""), \(authors.last!.name ?? "")"
+            }
+            if authors.count > 2 {
+                text += " et al."
+            }
         }
         authorsButton.setTitle(text, for: .normal)
         var ctext = "Conference"
@@ -98,7 +128,6 @@ class IdeaAddViewController: UIViewController {
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "selectAuthor" {
             let navigationController = segue.destination as! UINavigationController
@@ -112,8 +141,9 @@ class IdeaAddViewController: UIViewController {
     }
 }
 
+// MARK: - TextView PlaceHolder behaviour
+
 extension IdeaAddViewController : UITextViewDelegate {
-    
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if ideaDescriptionTextView.textColor == UIColor.lightGray {

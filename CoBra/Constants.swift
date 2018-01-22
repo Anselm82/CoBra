@@ -8,4 +8,5 @@
 
 import Foundation
 
+// Server URL
 let conferencesURL = "http://ralamarti.tk/iOS/conferences.plist"

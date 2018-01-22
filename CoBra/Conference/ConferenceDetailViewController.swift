@@ -9,6 +9,8 @@
 import UIKit
 
 class ConferenceDetailViewController: UIViewController {
+    
+    // Outlets
     @IBOutlet weak var conferenceNameLabel: UILabel!
     @IBOutlet weak var acronymLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
@@ -23,7 +25,7 @@ class ConferenceDetailViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    
+    // Prepare view
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,27 +44,9 @@ class ConferenceDetailViewController: UIViewController {
         formatter.dateFormat = "dd-MMM-yyyy hh:mm:ss"
         let abstractDate = formatter.string(from: (conference?.abstract_deadline)!)
         let articleDate = formatter.string(from: (conference?.article_deadline)!)
-        
         abstractDeadlineLabel.text = abstractDate
         articleDeadlineLabel.text = articleDate
         
-        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

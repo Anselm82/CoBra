@@ -10,12 +10,18 @@ import UIKit
 
 class AuthorDetailViewController: UIViewController {
     
+    // Outlets
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var authorSurnameLabel: UILabel!
     @IBOutlet weak var authorAffiliationLabel: UILabel!
     
+    @IBAction func done() {
+        dismiss(animated: true, completion: nil)
+    }
+    
     var author : Author?
     
+    // Prepare view
     override func viewDidLoad() {
         super.viewDidLoad()
         guard author != nil else {
@@ -25,15 +31,5 @@ class AuthorDetailViewController: UIViewController {
         authorSurnameLabel.text = author!.surname
         authorAffiliationLabel.text = author!.affiliation
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

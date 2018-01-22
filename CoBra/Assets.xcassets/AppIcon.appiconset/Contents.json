@@ -72,9 +72,8 @@
       "scale" : "2x"
     },
     {
-      "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "cobra76.png",
+      "size" : "76x76",
       "scale" : "1x"
     },
     {
@@ -83,9 +82,8 @@
       "scale" : "2x"
     },
     {
-      "size" : "83.5x83.5",
       "idiom" : "ipad",
-      "filename" : "logo84.png",
+      "size" : "83.5x83.5",
       "scale" : "2x"
     },
     {

@@ -31,21 +31,15 @@ class IdeaConferenceTableViewController: UITableViewController {
         return _frc
     }()
     
+    // Can be moved to didSelectRowAt
     @IBAction func selectionFinished(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
+    // Prepare view
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.clearsSelectionOnViewWillAppear = false
     }
     
     // MARK: - Table view data source
@@ -61,22 +55,15 @@ class IdeaConferenceTableViewController: UITableViewController {
         return 0
     }
     
+    // Prepare cell for conference
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let conference = frc.object(at: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "IdeaConferenceSelectionCell", for: indexPath) as! ConferenceTableViewCell
         cell.conference = conference
-        cell.conferenceNameLabel.text = conference.acronym
         return cell
     }
     
     // MARK: - Selection
-    
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let conference = frc.object(at: indexPath)
-        if previous!.conference == conference {
-            cell.isSelected = true
-        }
-    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var conference : Conference
@@ -91,29 +78,9 @@ class IdeaConferenceTableViewController: UITableViewController {
             previous!.conference = nil
         }
     }
-    
-    
-    
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-    }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
 
+// MARK : - NSFetchedResultsControllerDelegate
 extension IdeaConferenceTableViewController : NSFetchedResultsControllerDelegate {
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -133,7 +100,6 @@ extension IdeaConferenceTableViewController : NSFetchedResultsControllerDelegate
             break
         }
     }
-    
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         

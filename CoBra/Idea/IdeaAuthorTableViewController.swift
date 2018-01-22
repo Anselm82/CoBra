@@ -12,6 +12,9 @@ import CoreData
 class IdeaAuthorTableViewController: UITableViewController {
 
     var previous : IdeaAddViewController?
+    lazy var authors : [Author] = {
+       return [Author]()
+    }()
     
     lazy var context : NSManagedObjectContext = {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -31,23 +34,18 @@ class IdeaAuthorTableViewController: UITableViewController {
         return _frc
     }()
     
+    // Authors selected
     @IBAction func selectionFinished(_ sender: Any) {
+        previous?.authors = authors
         dismiss(animated: true, completion: nil)
     }
     
+    // Prepare view
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        clearsSelectionOnViewWillAppear = false
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -60,74 +58,51 @@ class IdeaAuthorTableViewController: UITableViewController {
         }
         return 0
     }
-
+    
+    // Prepare cell for author
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let author = frc.object(at: indexPath)
-        let cell = tableView.dequeueReusableCell(withIdentifier: "IdeaAuthorsSelectionCell", for: indexPath) as! AuthorTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "IdeaAuthorSelectionCell", for: indexPath) as! AuthorTableViewCell
         cell.author = author
-        let name = author.name!
-        let surname = author.surname!
-        cell.authorNameLabel.text = "\(surname), \(name)"
-        
         return cell
     }
     
-    // MARK: - Selection
-    
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let author = frc.object(at: indexPath)
-        if previous!.authors.contains(author) {
-            cell.isSelected = true
-        }
-    }
+    // MARK: - Selection handling
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var author : Author
         author = frc.object(at: indexPath)
-        previous!.idea?.addToAuthors(author)
-        previous!.authors.append(author)
+        // Send author to previous controller
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.isSelected = true
+        if !authors.contains(author) {
+            authors.append(author)
+        }
     }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         var author : Author
         author = frc.object(at: indexPath)
-        if previous!.authors.contains(author) {
-            let index = previous!.authors.index(of: author)!
-            previous!.idea?.removeFromAuthors(author)
-            previous!.authors.remove(at: index)
+        // Remove author from previous controller
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.isSelected = false
+        if authors.contains(author) {
+            authors.remove(at: authors.index(of: author)!)
         }
     }
-    
-
-    
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
+// MARK: - NSFetchedResultsControllerDelegate
+
 extension IdeaAuthorTableViewController : NSFetchedResultsControllerDelegate {
-    
+
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
-    
+
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        
+
         switch type {
         case .delete:
             let indexSet = IndexSet(arrayLiteral: sectionIndex)
@@ -139,25 +114,24 @@ extension IdeaAuthorTableViewController : NSFetchedResultsControllerDelegate {
             break
         }
     }
-    
-    
+
+
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        
+
         switch type {
         case .delete:
             tableView.deleteRows(at: [indexPath!], with: .fade)
         case .insert:
             tableView.insertRows(at: [newIndexPath!], with: .fade)
-        case .move:
-            tableView.moveRow(at: indexPath!, to: newIndexPath!)
-        case .update:
-            tableView.reloadRows(at: [indexPath!], with: .fade)
+        default:
+            break
         }
-        
+
     }
-    
+
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
-    
+
 }
+
